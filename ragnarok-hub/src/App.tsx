@@ -1,9 +1,8 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import ClassPage from "./pages/ClassPage";
-import CategoryPage from "./pages/CategoryPage";
-import EventPage from "./pages/EventPage";
-import BuildTypePage from "./pages/BuildTypePage";
+import EventsPage from "./pages/EventsPage";
+import BuildTypesPage from "./pages/BuildTypesPage";
 import BuildDetail from "./pages/BuildDetail";
 import Navigation from "./components/Navigation";
 
@@ -14,9 +13,8 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/class/:classId" element={<ClassPage />} />
-        <Route path="/class/:classId/:category" element={<CategoryPage />} />
-        <Route path="/class/:classId/:category/:event" element={<EventPage />} />
-        <Route path="/class/:classId/:category/:event/:buildType" element={<BuildTypePage />} />
+        <Route path="/class/:classId/:category" element={<EventsPage />} />
+        <Route path="/class/:classId/:category/:event" element={<BuildTypesPage />} />
         <Route path="/build/:buildId" element={<BuildDetail />} />
       </Routes>
     </BrowserRouter>

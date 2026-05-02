@@ -18,6 +18,12 @@ export default function CategoryPage() {
 
   return (
     <PageContainer>
+      <button
+        onClick={() => nav(`/class/${classId}`)}
+        className="mb-6 px-4 py-2 bg-slate-700 hover:bg-slate-600 rounded-lg transition font-semibold text-sm"
+      >
+        ← Back to Class
+      </button>
       <h1 className="text-3xl font-bold mb-6">Select Event</h1>
       <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
         {events.map((event) => (

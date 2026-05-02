@@ -22,6 +22,12 @@ export default function ClassPage() {
 
   return (
     <PageContainer>
+      <button
+        onClick={() => nav('/')}
+        className="mb-6 px-4 py-2 bg-slate-700 hover:bg-slate-600 rounded-lg transition font-semibold text-sm"
+      >
+        ← Back to Home
+      </button>
       <div className="mb-8">
         <img
           src={classData.image}
