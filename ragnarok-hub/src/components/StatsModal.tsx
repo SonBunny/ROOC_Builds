@@ -120,7 +120,7 @@ export default function StatsModal({ isOpen, onClose, classId, author, eventId, 
     );
   }
 
-  const { basicStatsImage, statsDetails } = imagePaths;
+  const { basicStats, statsDetails } = imagePaths;
 
   return (
     <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-50 p-4" onClick={onClose}>
@@ -140,14 +140,14 @@ export default function StatsModal({ isOpen, onClose, classId, author, eventId, 
           <div>
             <h3 className="text-xl font-bold text-white mb-4">Basic Stats</h3>
             <div className="bg-slate-800 rounded-lg p-4">
-              <div className="text-xs text-gray-400 mb-2">Image path: {basicStatsImage}</div>
+              
               <img
-                src={basicStatsImage}
+                src={basicStats}
                 alt="Basic Stats"
                 className="w-full rounded-lg"
                 style={{ minHeight: '200px', backgroundColor: '#1e293b' }}
                 onError={(e) => {
-                  console.error('Failed to load basic stats image:', basicStatsImage);
+                  console.error('Failed to load basic stats image:', basicStats);
                   const img = e.target as HTMLImageElement;
                   img.style.display = 'none';
                   // Show error message
@@ -155,12 +155,12 @@ export default function StatsModal({ isOpen, onClose, classId, author, eventId, 
                   if (parent) {
                     const errorMsg = document.createElement('div');
                     errorMsg.className = 'text-red-400 text-sm mt-2';
-                    errorMsg.textContent = `Failed to load: ${basicStatsImage}`;
+                    errorMsg.textContent = `Failed to load: ${basicStats}`;
                     parent.appendChild(errorMsg);
                   }
                 }}
                 onLoad={() => {
-                  console.log('Loaded basic stats image:', basicStatsImage);
+                  console.log('Loaded basic stats image:', basicStats);
                 }}
               />
             </div>
@@ -169,7 +169,7 @@ export default function StatsModal({ isOpen, onClose, classId, author, eventId, 
           {/* Stats Details Section - Stitched Together */}
           <div>
             <h3 className="text-xl font-bold text-white mb-4">Stats Details</h3>
-            <div className="flex flex-col gap-0">
+            <div className="flex flex-col gap-0 max-w-3xl mx-auto">
               {statsDetails.map((src, index) => (
                 <img
                   key={index}
