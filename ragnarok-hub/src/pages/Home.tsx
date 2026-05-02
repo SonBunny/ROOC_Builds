@@ -1,8 +1,9 @@
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { classes } from "../data/classes";
+import { loadClasses } from "../utils/dataLoader";
 import Card from "../components/Card";
 import PageContainer from "../components/PageContainer";
+import type { Class } from "../types/builds";
 
 const classDescriptions: { [key: string]: string } = {
   "High Wizard": "Master the arcane arts of fire, ice, and lightning. Unleash devastating spells from afar.",
@@ -42,17 +43,23 @@ export default function Home() {
   const nav = useNavigate();
   const [currentIndex, setCurrentIndex] = useState(0);
   const [activeTab, setActiveTab] = useState("featured");
+  const [classes, setClasses] = useState<Class[]>([]);
 
   useEffect(() => {
+    loadClasses().then(setClasses);
+  }, []);
+
+  useEffect(() => {
+    if (classes.length === 0) return;
     const interval = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % classes.length);
     }, 5000);
     return () => clearInterval(interval);
-  }, []);
+  }, [classes.length]);
 
   const currentClass = classes[currentIndex];
-  const gradientClass = classGradients[currentClass.name] || "from-blue-500 to-purple-600";
-  const description = classDescriptions[currentClass.name] || "A powerful Ragnarok class with unique abilities.";
+  const gradientClass = currentClass?.name ? (classGradients[currentClass.name] || "from-blue-500 to-purple-600") : "from-blue-500 to-purple-600";
+  const description = currentClass?.name ? (classDescriptions[currentClass.name] || "A powerful Ragnarok class with unique abilities.") : "Loading...";
 
   const goToPrevious = () => {
     setCurrentIndex((prev) => (prev - 1 + classes.length) % classes.length);
@@ -102,7 +109,14 @@ export default function Home() {
       </div>
 
       {/* Featured Tab Content */}
-      {activeTab === "featured" && (
+      {activeTab === "featured" && !currentClass && (
+        <div className="mb-20 text-center py-20">
+          <div className="text-gray-400">Loading classes...</div>
+        </div>
+      )}
+
+      {/* Featured Tab Content */}
+      {activeTab === "featured" && currentClass && (
       <div className="mb-20 rounded-3xl overflow-hidden bg-gradient-to-br from-slate-800 via-slate-900 to-slate-950 border border-slate-700 shadow-2xl">
         <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-16 p-6 md:p-12 lg:p-16 min-h-[500px] lg:min-h-[600px]">
           {/* Left Content */}
@@ -128,9 +142,9 @@ export default function Home() {
           <div className="flex-1 flex justify-center items-center order-1 lg:order-2">
             <div className="relative w-full max-w-sm">
               <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-600 rounded-2xl blur-3xl opacity-30 -z-10"></div>
-              <img 
-                src={`/classes/${currentClass.name.replace(/\s+/g, '%20')}.png`}
-                alt={currentClass.name} 
+              <img
+                src={currentClass.image}
+                alt={currentClass.name}
                 className="w-full h-auto drop-shadow-2xl rounded-xl"
               />
             </div>

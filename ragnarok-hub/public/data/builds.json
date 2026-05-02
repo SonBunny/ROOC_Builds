@@ -1,0 +1,374 @@
+{
+  "builds": [
+    {
+      "id": "high-wizard-pvp-guild-league-anti-tank",
+      "classId": "high-wizard",
+      "categoryId": "pvp",
+      "eventId": "guild-league",
+      "buildTypeId": "anti-tank",
+      "name": "Anti Tank High Wizard",
+      "description": "High survivability PvP build for Guild League",
+      "author": "PlayerName",
+      "lastUpdated": "2026-05-02",
+      "stats": {
+        "str": 1,
+        "agi": 99,
+        "vit": 80,
+        "int": 99,
+        "dex": 80,
+        "luk": 1
+      },
+      "equipment": {
+        "head": {
+          "name": "Poring Hat",
+          "refine": 10,
+          "cards": ["Poring Card"]
+        },
+        "armor": {
+          "name": "Robe",
+          "refine": 10,
+          "cards": ["Marc Card"]
+        },
+        "weapon": {
+          "name": "Staff",
+          "refine": 10,
+          "cards": ["Drops Card"]
+        },
+        "shield": {
+          "name": "Buckler",
+          "refine": 10,
+          "cards": ["Thara Frog Card"]
+        },
+        "garment": {
+          "name": "Muffler",
+          "refine": 10,
+          "cards": ["Raydric Card"]
+        },
+        "shoes": {
+          "name": "Shoes",
+          "refine": 10,
+          "cards": ["Matyr Card"]
+        },
+        "accessory1": {
+          "name": "Clip",
+          "refine": 0,
+          "cards": ["Zerom Card"]
+        },
+        "accessory2": {
+          "name": "Clip",
+          "refine": 0,
+          "cards": ["Zerom Card"]
+        }
+      },
+      "skills": [
+        "Jupitel Thunder",
+        "Storm Gust",
+        "Meteor Storm",
+        "Safety Wall",
+        "Sight Blaster"
+      ],
+      "feather": {
+        "name": "Fire Feather",
+        "level": 10
+      },
+      "pet": {
+        "name": "Poring",
+        "level": 10
+      },
+      "medals": [
+        "MVP Medal",
+        "PvP Medal"
+      ],
+      "divineArmament": {
+        "set": "Wizard Set",
+        "seasonalStats": {
+          "1": {
+            "str": 5,
+            "agi": 5
+          },
+          "2": {
+            "str": 10,
+            "agi": 10
+          }
+        }
+      },
+      "cards": [
+        "Poring Card",
+        "Marc Card",
+        "Drops Card",
+        "Thara Frog Card",
+        "Raydric Card",
+        "Matyr Card",
+        "Zerom Card"
+      ],
+      "enchants": [
+        "ATK +10",
+        "MATK +10"
+      ],
+      "guildSkills": [
+        "Battle Orders",
+        "Regeneration",
+        "Sharp Eyes"
+      ],
+      "consumableBuffs": [
+        "Blessing",
+        "Agi Up",
+        "Increase AGI"
+      ],
+      "images": [
+        "/builds/high-wizard-anti-tank-1.png",
+        "/builds/high-wizard-anti-tank-2.png"
+      ],
+      "tags": [
+        "tank",
+        "survival"
+      ]
+    },
+    {
+      "id": "high-wizard-pve-mvp-hunt-pure-dps",
+      "classId": "high-wizard",
+      "categoryId": "pve",
+      "eventId": "mvp-hunt",
+      "buildTypeId": "pure-dps",
+      "name": "Pure DPS High Wizard",
+      "description": "Maximum damage output for MVP hunting",
+      "author": "PlayerName",
+      "lastUpdated": "2026-05-02",
+      "stats": {
+        "str": 1,
+        "agi": 1,
+        "vit": 40,
+        "int": 99,
+        "dex": 99,
+        "luk": 1
+      },
+      "equipment": {
+        "head": {
+          "name": "Wizard Hat",
+          "refine": 10,
+          "cards": ["Eruda Card"]
+        },
+        "armor": {
+          "name": "Silk Robe",
+          "refine": 10,
+          "cards": ["Pasana Card"]
+        },
+        "weapon": {
+          "name": "Arc Wand",
+          "refine": 10,
+          "cards": ["Andre Card"]
+        },
+        "shield": {
+          "name": "Guard",
+          "refine": 10,
+          "cards": ["Khalitzburg Card"]
+        },
+        "garment": {
+          "name": "Hood",
+          "refine": 10,
+          "cards": ["Dagger Garment Card"]
+        },
+        "shoes": {
+          "name": "Boots",
+          "refine": 10,
+          "cards": ["Verit Card"]
+        },
+        "accessory1": {
+          "name": "Ring",
+          "refine": 0,
+          "cards": ["Zerom Card"]
+        },
+        "accessory2": {
+          "name": "Ring",
+          "refine": 0,
+          "cards": ["Zerom Card"]
+        }
+      },
+      "skills": [
+        "Jupitel Thunder",
+        "Storm Gust",
+        "Meteor Storm",
+        "Lord of Vermilion",
+        "Fire Bolt"
+      ],
+      "feather": {
+        "name": "Lightning Feather",
+        "level": 10
+      },
+      "pet": {
+        "name": "Lunatic",
+        "level": 10
+      },
+      "medals": [
+        "MVP Medal"
+      ],
+      "divineArmament": {
+        "set": "DPS Set"
+      },
+      "cards": [
+        "Eruda Card",
+        "Pasana Card",
+        "Andre Card",
+        "Khalitzburg Card",
+        "Dagger Garment Card",
+        "Verit Card",
+        "Zerom Card"
+      ],
+      "enchants": [
+        "MATK +20",
+        "Cast Time -10%"
+      ],
+      "guildSkills": [
+        "Battle Orders",
+        "Regeneration"
+      ],
+      "consumableBuffs": [
+        "Blessing",
+        "Increase AGI",
+        "Suffragium"
+      ],
+      "images": [
+        "/builds/high-wizard-dps-1.png"
+      ],
+      "tags": [
+        "dps",
+        "mvp"
+      ]
+    },
+    {
+      "id": "high-wizard-pve-nightmare-temple-s2-dps",
+      "classId": "high-wizard",
+      "categoryId": "pve",
+      "eventId": "nightmare-temple",
+      "buildTypeId": "s2-dps",
+      "name": "Season 2 DPS High Wizard",
+      "description": "Optimized for Nightmare Temple Season 2",
+      "author": "PlayerName",
+      "lastUpdated": "2026-05-02",
+      "stats": {
+        "str": 1,
+        "agi": 1,
+        "vit": 50,
+        "int": 99,
+        "dex": 99,
+        "luk": 1
+      },
+      "equipment": {
+        "head": {
+          "name": "Nightmare Hat",
+          "refine": 10,
+          "cards": ["Nightmare Card"]
+        },
+        "armor": {
+          "name": "Nightmare Robe",
+          "refine": 10,
+          "cards": ["Evil Druid Card"]
+        },
+        "weapon": {
+          "name": "Nightmare Staff",
+          "refine": 10,
+          "cards": ["Skeleton Worker Card"]
+        },
+        "shield": {
+          "name": "Nightmare Shield",
+          "refine": 10,
+          "cards": ["Orc Lord Card"]
+        },
+        "garment": {
+          "name": "Nightmare Cloak",
+          "refine": 10,
+          "cards": ["Dustiness Card"]
+        },
+        "shoes": {
+          "name": "Nightmare Boots",
+          "refine": 10,
+          "cards": ["Gremlin Card"]
+        },
+        "accessory1": {
+          "name": "Nightmare Ring",
+          "refine": 0,
+          "cards": ["Mantis Card"]
+        },
+        "accessory2": {
+          "name": "Nightmare Ring",
+          "refine": 0,
+          "cards": ["Mantis Card"]
+        }
+      },
+      "skills": [
+        "Jupitel Thunder",
+        "Storm Gust",
+        "Meteor Storm",
+        "Lord of Vermilion",
+        "Napalm Vulcan"
+      ],
+      "feather": {
+        "name": "Nightmare Feather",
+        "level": 10
+      },
+      "pet": {
+        "name": "Nightmare Pet",
+        "level": 10
+      },
+      "medals": [
+        "Nightmare Temple Medal"
+      ],
+      "divineArmament": {
+        "set": "Nightmare Set",
+        "seasonalStats": {
+          "1": {
+            "str": 5,
+            "agi": 5,
+            "vit": 5,
+            "int": 5,
+            "dex": 5,
+            "luk": 5
+          },
+          "2": {
+            "str": 10,
+            "agi": 10,
+            "vit": 10,
+            "int": 10,
+            "dex": 10,
+            "luk": 10
+          }
+        }
+      },
+      "cards": [
+        "Nightmare Card",
+        "Evil Druid Card",
+        "Skeleton Worker Card",
+        "Orc Lord Card",
+        "Dustiness Card",
+        "Gremlin Card",
+        "Mantis Card"
+      ],
+      "enchants": [
+        "MATK +30",
+        "Cast Time -15%",
+        "Variable Cast Time -5%"
+      ],
+      "guildSkills": [
+        "Battle Orders",
+        "Regeneration",
+        "Sharp Eyes",
+        "Lucky Day"
+      ],
+      "consumableBuffs": [
+        "Blessing",
+        "Increase AGI",
+        "Suffragium",
+        "Kyrie Eleison"
+      ],
+      "images": [
+        "/builds/high-wizard-nt-s2-1.png",
+        "/builds/high-wizard-nt-s2-2.png"
+      ],
+      "tags": [
+        "dps",
+        "nightmare-temple",
+        "season-2"
+      ]
+    }
+  ]
+}

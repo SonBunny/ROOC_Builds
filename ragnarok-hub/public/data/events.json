@@ -1,0 +1,45 @@
+{
+  "events": [
+    {
+      "id": "guild-league",
+      "categoryId": "pvp",
+      "name": "Guild League"
+    },
+    {
+      "id": "dimension-drill",
+      "categoryId": "pvp",
+      "name": "Dimension Drill"
+    },
+    {
+      "id": "emperium-overrun",
+      "categoryId": "pvp",
+      "name": "Emperium Overrun"
+    },
+    {
+      "id": "mvp-hunt",
+      "categoryId": "pve",
+      "name": "MVP Hunt"
+    },
+    {
+      "id": "team-dungeon",
+      "categoryId": "pve",
+      "name": "Team Dungeon"
+    },
+    {
+      "id": "juperos",
+      "categoryId": "pve",
+      "name": "Juperos"
+    },
+    {
+      "id": "endless-tower",
+      "categoryId": "pve",
+      "name": "Endless Tower"
+    },
+    {
+      "id": "nightmare-temple",
+      "categoryId": "pve",
+      "name": "Nightmare Temple",
+      "hasSeasons": true
+    }
+  ]
+}

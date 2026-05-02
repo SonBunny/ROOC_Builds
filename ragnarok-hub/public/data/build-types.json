@@ -1,0 +1,99 @@
+{
+  "buildTypes": [
+    {
+      "id": "anti-tank",
+      "eventId": "guild-league",
+      "name": "Anti Tank"
+    },
+    {
+      "id": "glass-cannon",
+      "eventId": "guild-league",
+      "name": "Glass Cannon"
+    },
+    {
+      "id": "support",
+      "eventId": "guild-league",
+      "name": "Support"
+    },
+    {
+      "id": "dps",
+      "eventId": "dimension-drill",
+      "name": "Pure DPS"
+    },
+    {
+      "id": "tank",
+      "eventId": "dimension-drill",
+      "name": "Tank Support"
+    },
+    {
+      "id": "breaker",
+      "eventId": "emperium-overrun",
+      "name": "Emperium Breaker"
+    },
+    {
+      "id": "defender",
+      "eventId": "emperium-overrun",
+      "name": "Emperium Defender"
+    },
+    {
+      "id": "pure-dps",
+      "eventId": "mvp-hunt",
+      "name": "Pure DPS"
+    },
+    {
+      "id": "tank-support",
+      "eventId": "mvp-hunt",
+      "name": "Tank Support"
+    },
+    {
+      "id": "dps-carry",
+      "eventId": "team-dungeon",
+      "name": "DPS Carry"
+    },
+    {
+      "id": "support-healer",
+      "eventId": "team-dungeon",
+      "name": "Support Healer"
+    },
+    {
+      "id": "melee-dps",
+      "eventId": "juperos",
+      "name": "Melee DPS"
+    },
+    {
+      "id": "ranged-dps",
+      "eventId": "juperos",
+      "name": "Ranged DPS"
+    },
+    {
+      "id": "floor-clearer",
+      "eventId": "endless-tower",
+      "name": "Floor Clearer"
+    },
+    {
+      "id": "boss-killer",
+      "eventId": "endless-tower",
+      "name": "Boss Killer"
+    },
+    {
+      "id": "s1-dps",
+      "eventId": "nightmare-temple",
+      "name": "Season 1 DPS"
+    },
+    {
+      "id": "s1-tank",
+      "eventId": "nightmare-temple",
+      "name": "Season 1 Tank"
+    },
+    {
+      "id": "s2-dps",
+      "eventId": "nightmare-temple",
+      "name": "Season 2 DPS"
+    },
+    {
+      "id": "s2-tank",
+      "eventId": "nightmare-temple",
+      "name": "Season 2 Tank"
+    }
+  ]
+}

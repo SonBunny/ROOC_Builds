@@ -1,0 +1,74 @@
+{
+  "classes": [
+    {
+      "id": "high-wizard",
+      "image": "/classes/High Wizard.png",
+      "name": "High Wizard"
+    },
+    {
+      "id": "sage",
+      "image": "/classes/Sage.png",
+      "name": "Sage"
+    },
+    {
+      "id": "assassin-cross",
+      "image": "/classes/Assassin Cross.png",
+      "name": "Assassin Cross"
+    },
+    {
+      "id": "bio-chemist",
+      "image": "/classes/Bio Chemist.png",
+      "name": "Bio Chemist"
+    },
+    {
+      "id": "champion",
+      "image": "/classes/Champion.png",
+      "name": "Champion"
+    },
+    {
+      "id": "gypsy",
+      "image": "/classes/Gypsy.png",
+      "name": "Gypsy"
+    },
+    {
+      "id": "high-priest",
+      "image": "/classes/High Priest.png",
+      "name": "High Priest"
+    },
+    {
+      "id": "lord-knight",
+      "image": "/classes/Lord Knight.png",
+      "name": "Lord Knight"
+    },
+    {
+      "id": "ministrel",
+      "image": "/classes/Ministrel.png",
+      "name": "Ministrel"
+    },
+    {
+      "id": "paladin",
+      "image": "/classes/Paladin.png",
+      "name": "Paladin"
+    },
+    {
+      "id": "sniper",
+      "image": "/classes/Sniper.png",
+      "name": "Sniper"
+    },
+    {
+      "id": "stalker",
+      "image": "/classes/Stalker.png",
+      "name": "Stalker"
+    },
+    {
+      "id": "summoner",
+      "image": "/classes/Summoner.png",
+      "name": "Summoner"
+    },
+    {
+      "id": "whitesmith",
+      "image": "/classes/WhiteSmith.png",
+      "name": "WhiteSmith"
+    }
+  ]
+}

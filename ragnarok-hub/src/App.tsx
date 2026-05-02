@@ -1,10 +1,10 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import ClassPage from "./pages/ClassPage";
-import SubclassPage from "./pages/SubClassPage";
-import ModePage from "./pages/ModePage";
+import CategoryPage from "./pages/CategoryPage";
+import EventPage from "./pages/EventPage";
+import BuildTypePage from "./pages/BuildTypePage";
 import BuildDetail from "./pages/BuildDetail";
-import BuildList from "./pages/BuildList";
 import Navigation from "./components/Navigation";
 
 function App() {
@@ -14,13 +14,10 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/class/:classId" element={<ClassPage />} />
-        <Route path="/subclass/:id" element={<SubclassPage />} />
-        <Route path="/mode/:id/:category" element={<ModePage />} />
+        <Route path="/class/:classId/:category" element={<CategoryPage />} />
+        <Route path="/class/:classId/:category/:event" element={<EventPage />} />
+        <Route path="/class/:classId/:category/:event/:buildType" element={<BuildTypePage />} />
         <Route path="/build/:buildId" element={<BuildDetail />} />
-        <Route
-          path="/builds/:subclass/:category/:mode"
-          element={<BuildList />}
-        />
       </Routes>
     </BrowserRouter>
   );
