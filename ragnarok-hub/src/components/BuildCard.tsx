@@ -16,7 +16,7 @@ export default function BuildCard({ build, onClick }: BuildCardProps) {
       <h3 className="text-xl font-bold text-white mb-2">{build.name}</h3>
       <p className="text-sm text-gray-400 mb-3">{build.description}</p>
       <div className="flex flex-wrap gap-2 mb-3">
-        {build.tags.map((tag, index) => (
+        {build.tags?.map((tag, index) => (
           <span
             key={index}
             className="px-2 py-1 bg-purple-600 text-white rounded-full text-xs"

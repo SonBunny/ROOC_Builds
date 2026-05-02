@@ -1,10 +1,9 @@
 import { useState } from 'react';
-import type { Stats, AllocatedStats, BonusStats } from '../types/builds';
+import type { Stats, AllocatedStats } from '../types/builds';
 import StatsModal from './StatsModal';
 
 interface StatsDisplayProps {
   stats: Stats;
-  seasonalStats?: any;
   classId?: string;
   author?: string;
   eventId?: string;
@@ -12,7 +11,7 @@ interface StatsDisplayProps {
   buildName?: string;
 }
 
-export default function StatsDisplay({ stats, seasonalStats, classId, author, eventId, categoryId, buildName }: StatsDisplayProps) {
+export default function StatsDisplay({ stats, classId, author, eventId, categoryId, buildName }: StatsDisplayProps) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const { allocated, bonus } = stats;
 

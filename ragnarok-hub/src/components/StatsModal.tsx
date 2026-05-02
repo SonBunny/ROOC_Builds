@@ -166,17 +166,16 @@ export default function StatsModal({ isOpen, onClose, classId, author, eventId, 
             </div>
           </div>
 
-          {/* Stats Details Section - Stitched Together */}
+          {/* Stats Details Section */}
           <div>
             <h3 className="text-xl font-bold text-white mb-4">Stats Details</h3>
-            <div className="flex flex-col gap-0 max-w-3xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               {statsDetails.map((src, index) => (
                 <img
                   key={index}
                   src={src}
                   alt={`Stats Details ${index + 1}`}
-                  className="w-full rounded-t-lg first:rounded-t-lg last:rounded-b-lg"
-                  style={{ marginTop: index > 0 ? '-1px' : '0' }}
+                  className="w-full rounded-lg"
                   onError={(e) => {
                     console.error(`Failed to load stats detail image ${index + 1}:`, src);
                     const img = e.target as HTMLImageElement;

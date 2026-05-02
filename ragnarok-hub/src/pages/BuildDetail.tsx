@@ -43,9 +43,6 @@ export default function BuildDetail() {
 
   const isNightmareTemple = build.eventId === 'nightmare-temple';
   const hasSeasonalStats = build.divineArmament?.seasonalStats && Object.keys(build.divineArmament.seasonalStats).length > 0;
-  const currentSeasonalStats = selectedSeason && build.divineArmament?.seasonalStats
-    ? build.divineArmament.seasonalStats[selectedSeason]
-    : undefined;
 
   return (
     <PageContainer>
@@ -87,7 +84,6 @@ export default function BuildDetail() {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
         <StatsDisplay
           stats={build.stats}
-          seasonalStats={currentSeasonalStats}
           classId={build.classId}
           author={build.author}
           eventId={build.eventId}
