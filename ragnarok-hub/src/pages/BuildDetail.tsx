@@ -43,6 +43,9 @@ export default function BuildDetail() {
 
   const isNightmareTemple = build.eventId === 'nightmare-temple';
   const hasSeasonalStats = build.divineArmament?.seasonalStats && Object.keys(build.divineArmament.seasonalStats).length > 0;
+  const currentSeasonalStats = selectedSeason && build.divineArmament?.seasonalStats
+    ? build.divineArmament.seasonalStats[selectedSeason]
+    : undefined;
 
   return (
     <PageContainer>
@@ -84,6 +87,7 @@ export default function BuildDetail() {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
         <StatsDisplay
           stats={build.stats}
+          seasonalStats={currentSeasonalStats}
           classId={build.classId}
           author={build.author}
           eventId={build.eventId}
@@ -94,6 +98,60 @@ export default function BuildDetail() {
       </div>
 
       <EquipmentDisplay equipment={build.equipment} />
+
+      {currentSeasonalStats && (
+        <div className="mt-6 bg-slate-800 rounded-xl p-6 border border-slate-700">
+          <h3 className="text-xl font-bold mb-4 text-white">Seasonal Stats</h3>
+          <div className="space-y-3">
+            {currentSeasonalStats.Level && (
+              <div className="flex items-center gap-3">
+                <span className="w-32 text-gray-400">Level</span>
+                <span className="text-white font-bold">{currentSeasonalStats.Level}</span>
+              </div>
+            )}
+            {currentSeasonalStats.PermanentStats && (
+              <div className="space-y-2">
+                <div className="text-sm text-gray-400 font-semibold">Permanent Stats</div>
+                {currentSeasonalStats.PermanentStats.pdef && (
+                  <div className="flex items-center gap-3">
+                    <span className="w-32 text-gray-400">PDEF</span>
+                    <span className="text-white">+{currentSeasonalStats.PermanentStats.pdef}</span>
+                  </div>
+                )}
+                {currentSeasonalStats.PermanentStats.mdef && (
+                  <div className="flex items-center gap-3">
+                    <span className="w-32 text-gray-400">MDEF</span>
+                    <span className="text-white">+{currentSeasonalStats.PermanentStats.mdef}</span>
+                  </div>
+                )}
+                {currentSeasonalStats.PermanentStats.maxhp && (
+                  <div className="flex items-center gap-3">
+                    <span className="w-32 text-gray-400">Max HP</span>
+                    <span className="text-green-400">+{currentSeasonalStats.PermanentStats.maxhp}</span>
+                  </div>
+                )}
+                {currentSeasonalStats.PermanentStats.pvpdmgreduction && (
+                  <div className="flex items-center gap-3">
+                    <span className="w-32 text-gray-400">PvP DMG Reduction</span>
+                    <span className="text-blue-400">+{currentSeasonalStats.PermanentStats.pvpdmgreduction}%</span>
+                  </div>
+                )}
+              </div>
+            )}
+            {currentSeasonalStats.SeasonalStats && (
+              <div className="space-y-2">
+                <div className="text-sm text-gray-400 font-semibold">Seasonal Stats</div>
+                {Object.entries(currentSeasonalStats.SeasonalStats).map(([stat, value]) => (
+                  <div key={stat} className="flex items-center gap-3">
+                    <span className="w-32 text-gray-400">{stat}</span>
+                    <span className="text-white">+{value}</span>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+        </div>
+      )}
 
       {build.feather && (
         <div className="mt-6 bg-slate-800 rounded-xl p-6 border border-slate-700">
