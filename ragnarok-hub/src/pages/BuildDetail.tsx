@@ -1,5 +1,5 @@
 import { useParams, useNavigate } from "react-router-dom";
-import { loadBuilds, loadSeasons, getLatestSeason } from "../utils/dataLoader";
+import { loadBuildsByClass, loadSeasons, getLatestSeason, loadClasses } from "../utils/dataLoader";
 import PageContainer from "../components/PageContainer";
 import StatsDisplay from "../components/StatsDisplay";
 import EquipmentDisplay from "../components/EquipmentDisplay";
@@ -16,10 +16,21 @@ export default function BuildDetail() {
   const [selectedSeason, setSelectedSeason] = useState<string | null>(null);
 
   useEffect(() => {
-    loadBuilds().then((builds) => {
-      const found = builds.find((b) => b.id === buildId);
-      setBuild(found || null);
+    // Find the correct classId by matching buildId prefix against known classes
+    loadClasses().then((classes) => {
+      // Find which class this build belongs to by checking if buildId starts with classId
+      const matchingClass = classes.find((c) => buildId?.startsWith(c.id));
+
+      if (matchingClass) {
+        loadBuildsByClass(matchingClass.id).then((builds) => {
+          const found = builds.find((b) => b.id === buildId);
+          setBuild(found || null);
+        });
+      } else {
+        setBuild(null);
+      }
     });
+
     loadSeasons().then((allSeasons) => {
       setSeasons(allSeasons);
       getLatestSeason().then((latest) => {
@@ -30,8 +41,9 @@ export default function BuildDetail() {
 
   if (!build) return <div>Not found</div>;
 
-  const hasSeasonalStats = build.divineArmament.seasonalStats && Object.keys(build.divineArmament.seasonalStats).length > 0;
-  const currentSeasonalStats = selectedSeason && build.divineArmament.seasonalStats
+  const isNightmareTemple = build.eventId === 'nightmare-temple';
+  const hasSeasonalStats = build.divineArmament?.seasonalStats && Object.keys(build.divineArmament.seasonalStats).length > 0;
+  const currentSeasonalStats = selectedSeason && build.divineArmament?.seasonalStats
     ? build.divineArmament.seasonalStats[selectedSeason]
     : undefined;
 
@@ -53,7 +65,7 @@ export default function BuildDetail() {
           <span>Updated {build.lastUpdated}</span>
         </div>
         <div className="flex flex-wrap gap-2 mt-4">
-          {build.tags.map((tag, index) => (
+          {build.tags?.map((tag, index) => (
             <span
               key={index}
               className="px-3 py-1 bg-purple-600 text-white rounded-full text-sm"
@@ -64,7 +76,7 @@ export default function BuildDetail() {
         </div>
       </div>
 
-      {hasSeasonalStats && (
+      {isNightmareTemple && hasSeasonalStats && (
         <SeasonFilter
           seasons={seasons}
           selectedSeason={selectedSeason}
@@ -74,7 +86,7 @@ export default function BuildDetail() {
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
         <StatsDisplay stats={build.stats} seasonalStats={currentSeasonalStats} />
-        <SkillsDisplay skills={build.skills} />
+        <SkillsDisplay skills={build.skills || []} />
       </div>
 
       <EquipmentDisplay equipment={build.equipment} />
@@ -97,16 +109,16 @@ export default function BuildDetail() {
         </div>
       )}
 
-      {build.medals && build.medals.length > 0 && (
+      {build.medals && Object.keys(build.medals).length > 0 && (
         <div className="mt-6 bg-slate-800 rounded-xl p-6 border border-slate-700">
           <h3 className="text-xl font-bold mb-4 text-white">Medals</h3>
           <div className="flex flex-wrap gap-2">
-            {build.medals.map((medal, index) => (
+            {Object.entries(build.medals).map(([medalName, medalData], index) => (
               <span
                 key={index}
                 className="px-3 py-1 bg-yellow-600 text-white rounded-full text-sm"
               >
-                {medal}
+                {medalName} (Level {medalData.Level})
               </span>
             ))}
           </div>
@@ -116,9 +128,79 @@ export default function BuildDetail() {
       {build.divineArmament && (
         <div className="mt-6 bg-slate-800 rounded-xl p-6 border border-slate-700">
           <h3 className="text-xl font-bold mb-4 text-white">Divine Armament</h3>
-          <div className="text-white mb-4">{build.divineArmament.set}</div>
+          {build.divineArmament.weapon && (
+            <div className="mb-4">
+              <div className="text-white font-bold mb-2">Weapon: {build.divineArmament.weapon.set}</div>
+              {build.divineArmament.weapon.effects?.base && (
+                <div className="text-sm text-gray-400 mb-2">
+                  <div className="font-semibold text-gray-300">Base Effects:</div>
+                  {build.divineArmament.weapon.effects.base.map((effect, i) => (
+                    <div key={i}>• {effect}</div>
+                  ))}
+                </div>
+              )}
+              {build.divineArmament.weapon.effects?.refine && (
+                <div className="text-sm text-gray-400">
+                  <div className="font-semibold text-gray-300">Refine Effects:</div>
+                  {build.divineArmament.weapon.effects.refine.map((refine, i) => (
+                    <div key={i}>+{refine.level}: {refine.effects.join(', ')}</div>
+                  ))}
+                </div>
+              )}
+            </div>
+          )}
+          {build.divineArmament.shield && (
+            <div className="mb-4">
+              <div className="text-white font-bold mb-2">Shield: {build.divineArmament.shield.set || 'None'}</div>
+              {build.divineArmament.shield.effects?.base && build.divineArmament.shield.effects.base.length > 0 && (
+                <div className="text-sm text-gray-400 mb-2">
+                  <div className="font-semibold text-gray-300">Base Effects:</div>
+                  {build.divineArmament.shield.effects.base.map((effect, i) => (
+                    <div key={i}>• {effect}</div>
+                  ))}
+                </div>
+              )}
+              {build.divineArmament.shield.effects?.refine && build.divineArmament.shield.effects.refine.length > 0 && (
+                <div className="text-sm text-gray-400">
+                  <div className="font-semibold text-gray-300">Refine Effects:</div>
+                  {build.divineArmament.shield.effects.refine.map((refine, i) => (
+                    <div key={i}>+{refine.level}: {refine.effects.join(', ')}</div>
+                  ))}
+                </div>
+              )}
+            </div>
+          )}
+          {build.divineArmament.armor && (
+            <div className="mb-4">
+              <div className="text-white font-bold mb-2">Armor: {build.divineArmament.armor.set}</div>
+              {build.divineArmament.armor.effects?.base && (
+                <div className="text-sm text-gray-400 mb-2">
+                  <div className="font-semibold text-gray-300">Base Effects:</div>
+                  {build.divineArmament.armor.effects.base.map((effect, i) => (
+                    <div key={i}>• {effect}</div>
+                  ))}
+                </div>
+              )}
+              {build.divineArmament.armor.effects?.refine && (
+                <div className="text-sm text-gray-400 mb-2">
+                  <div className="font-semibold text-gray-300">Refine Effects:</div>
+                  {build.divineArmament.armor.effects.refine.map((refine, i) => (
+                    <div key={i}>+{refine.level}: {refine.effects.join(', ')}</div>
+                  ))}
+                </div>
+              )}
+              {build.divineArmament.armor.set_effects && build.divineArmament.armor.set_effects.length > 0 && (
+                <div className="text-sm text-gray-400">
+                  <div className="font-semibold text-gray-300">Set Effects:</div>
+                  {build.divineArmament.armor.set_effects.map((setEffect, i) => (
+                    <div key={i}>{setEffect.pieces} pieces: {setEffect.effects.join(', ')}</div>
+                  ))}
+                </div>
+              )}
+            </div>
+          )}
           {hasSeasonalStats && (
-            <div className="text-sm text-gray-400">
+            <div className="text-sm text-gray-400 mt-4">
               {selectedSeason
                 ? `Showing stats for Season ${selectedSeason}`
                 : 'Showing base stats'}

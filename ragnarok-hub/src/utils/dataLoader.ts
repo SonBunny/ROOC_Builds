@@ -24,7 +24,15 @@ export async function loadBuildTypes(): Promise<BuildType[]> {
   return data.buildTypes;
 }
 
+export async function loadBuildsByClass(classId: string): Promise<Build[]> {
+  const response = await fetch(`/data/builds/${classId}.json`);
+  const data = await response.json();
+  return data.builds || [];
+}
+
 export async function loadBuilds(): Promise<Build[]> {
+  // This function is deprecated - use loadBuildsByClass instead
+  // Kept for backward compatibility
   const response = await fetch('/data/builds.json');
   const data = await response.json();
   return data.builds;

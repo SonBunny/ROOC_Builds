@@ -26,7 +26,7 @@ export default function Navigation() {
             <div className="text-2xl md:text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500">
               RO
             </div>
-            <span className="hidden sm:inline text-lg md:text-xl font-bold text-white">Build Hub</span>
+            <span className="hidden sm:inline text-lg md:text-xl font-bold text-white">Build Hub DreamShader</span>
           </Link>
 
           {/* Desktop Navigation */}

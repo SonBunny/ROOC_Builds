@@ -1,7 +1,9 @@
 {
   "permissions": {
     "allow": [
-      "Bash(python create_builds.py)"
+      "Bash(python create_builds.py)",
+      "PowerShell(cd \"c:\\\\Users\\\\Son\\\\OneDrive\\\\Documents\\\\ROOC_Builds\\\\ragnarok-hub\\\\public\\\\data\\\\builds\"; try { $json = Get-Content -Path \"assassin-cross.json\" -Raw | ConvertFrom-Json; Write-Host \"Valid JSON - Total builds: $\\($json.builds.Count\\)\" } catch { Write-Host \"Invalid JSON: $_\" })",
+      "PowerShell(cd \"c:\\\\Users\\\\Son\\\\OneDrive\\\\Documents\\\\ROOC_Builds\\\\ragnarok-hub\\\\public\\\\data\\\\builds\"; try { $json = Get-Content -Path \"high-wizard.json\" -Raw | ConvertFrom-Json; Write-Host \"Valid JSON - Total builds: $\\($json.builds.Count\\)\" } catch { Write-Host \"Invalid JSON: $_\" })"
     ]
   }
 }

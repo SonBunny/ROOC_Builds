@@ -1,0 +1,199 @@
+﻿{
+  "builds": [
+    {
+      "id": "high-wizard-pvp-guild-league-storm-gust",
+
+      "equipment": {
+        "headwear": {
+          "refine": 0,
+          "name": "Any Headwear",
+          "cards": ["Cramp Card+ ⭐", "Cramp Card+ ⭐"]
+        },
+        "facewear": {
+          "refine": 0,
+          "name": "Any Facewear",
+          "cards": ["Goblin Leader Puppet Card+ ⭐", "Rose Ornament+ ⭐"]
+        },
+        "mouthwear": {
+          "refine": 0,
+          "name": "Any Mouthwear",
+          "cards": ["Baby Pacifier Card+", "Baby Pacifier Card+"]
+        },
+        "weapon": {
+          "refine": 14,
+          "name": "Dawn Staff",
+          "cards": ["Hydra Card+", "Illusion Hydra Card+ ⭐", "Boa Card+ ⭐⭐"]
+        },
+        "shield": {
+          "refine": 0,
+          "name": "",
+          "cards": []
+        },
+        "armor": {
+          "refine": 12,
+          "name": "Dawn Armor",
+          "cards": ["Baby Desert Wolf Card+ ⭐⭐"]
+        },
+        "cloak": {
+          "refine": 11,
+          "name": "Dawn Mantle",
+          "cards": ["Orc Baby Card+", "Frilldora Card+"]
+        },
+        "shoes": {
+          "refine": 10,
+          "name": "Dawn Boots",
+          "cards": ["Verit Card+ ⭐", "Verit Card+"]
+        },
+        "accessory1": {
+          "refine": 11,
+          "name": "Orleans Gloves",
+          "cards": ["Tarou Card+", "Wraith Card+ ⭐⭐"]
+        },
+        "accessory2": {
+          "refine": 10,
+          "name": "Orleans Gloves",
+          "cards": ["Smokie Card+", "Wraith Card+ ⭐⭐"]
+        },
+        "backwear": {
+          "refine": 0,
+          "name": "Any Backwear",
+          "cards": []
+        },
+        "costume": {
+          "refine": 0,
+          "name": "Any Costume",
+          "cards": []
+        }
+      },
+      "skills":  [
+                                      "Sonic Blow",
+                                      "Cloak",
+                                      "Envenom",
+                                      "Soul Destroyer",
+                                      "Meteor Assault"
+                                  ],
+
+      "name": "Storm Gust High Wizard",
+
+      "divineArmament": {
+        "seasonalStats": {
+          "Elemental Chaos": {
+            "Level": 19,
+            "Permanent Stats": {
+              "pdef": 95,
+              "mdef": 38,
+              "maxhp": 1425,
+              "pvpdmgreduction": 190
+            },
+            "Seasonal Stats": {
+              "PDMG/MDGM Bonus": 20,
+              "PDMG/MDGM Reduction": 20
+            }
+          }
+        },
+
+        "weapon": {
+          "set": "Netherforce",
+          "effects": {
+            "base": [
+              "Max SP +8%",
+              "Every 10 Max SP increases MATK by 1 (up to 45,000 Max SP)"
+            ],
+            "refine": [
+              {
+                "level": 6,
+                "effects": [
+                  "Every 500 Max SP reduces Global CD by 1% (up to -20%)"
+                ]
+              },
+              {
+                "level": 10,
+                "effects": [
+                  "Every 400 Max SP increases MDMG by 1% (up to 45,000 Max SP)"
+                ]
+              },
+              {
+                "level": 15,
+                "effects": ["Max SP +5%"]
+              }
+            ]
+          }
+        },
+        "shield": {
+          "set": "",
+          "effects": {
+            "base": [
+              
+            ],
+            "refine": [
+             
+            ]
+          }
+        },
+
+        "armor": {
+          "set": "Sprint Set",
+          "effects": {
+            "base": ["INT +1", "MDMG +2%"],
+            "refine": [
+              { "level": 3, "effects": ["INT +1"] },
+              { "level": 6, "effects": ["MATK +2%"] },
+              { "level": 10, "effects": ["MATK +3%"] },
+              { "level": 12, "effects": ["PDMG Reduction +3%"] },
+              { "level": 15, "effects": ["Max HP +200"] }
+            ]
+          },
+          "set_effects": [
+            {
+              "pieces": 3,
+              "effects": [
+                "Max SP +5%",
+                "Global CD -10%",
+                "MDMG +8%"
+              ]
+            }
+          ]
+        }
+      },
+
+      "author": "DreamShader",
+      "description": "High Damage PvP build for Guild League",
+      "eventId": "guild-league",
+
+        "stats": {
+        "allocated": {
+            "str": 1,
+            "agi": 1,
+            "vit": 77,
+            "int": 99,
+            "dex": 50,
+            "luk": 4
+        },
+        "bonus": {
+            "str": 18,
+            "agi": 36,
+            "vit": 56,
+            "int": 110,
+            "dex": 60,
+            "luk": 21
+        }
+        },
+
+      "medals": {
+        "Medal of Bravery": { "Level": 37 },
+        "Medal of Heroism": { "Level": 1 },
+        "Medal of Wisdom": { "Level": 45 },
+        "Medal of Charm": { "Level": 9 },
+        "Medal of Tempest": { "Level": 2 },
+        "Medal of Gratitude": { "Level": 1 },
+        "Medal of Loyalty": { "Level": 1 }
+      },
+
+      "categoryId": "pvp",
+      "tags": ["dps", "max damage"],
+
+      "classId": "high-wizard",
+      "buildTypeId": "burst"
+    }
+  ]
+}

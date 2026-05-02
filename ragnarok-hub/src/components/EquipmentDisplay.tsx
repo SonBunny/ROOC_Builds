@@ -6,14 +6,18 @@ interface EquipmentDisplayProps {
 
 export default function EquipmentDisplay({ equipment }: EquipmentDisplayProps) {
   const slots = [
-    { key: 'head' as keyof Equipment, label: 'Head' },
+    { key: 'headwear' as keyof Equipment, label: 'Headwear' },
+    { key: 'facewear' as keyof Equipment, label: 'Facewear' },
+    { key: 'mouthwear' as keyof Equipment, label: 'Mouthwear' },
     { key: 'armor' as keyof Equipment, label: 'Armor' },
     { key: 'weapon' as keyof Equipment, label: 'Weapon' },
     { key: 'shield' as keyof Equipment, label: 'Shield' },
-    { key: 'garment' as keyof Equipment, label: 'Garment' },
+    { key: 'cloak' as keyof Equipment, label: 'Cloak' },
     { key: 'shoes' as keyof Equipment, label: 'Shoes' },
     { key: 'accessory1' as keyof Equipment, label: 'Accessory 1' },
     { key: 'accessory2' as keyof Equipment, label: 'Accessory 2' },
+    { key: 'backwear' as keyof Equipment, label: 'Backwear' },
+    { key: 'costume' as keyof Equipment, label: 'Costume' },
   ];
 
   return (

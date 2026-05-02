@@ -1,0 +1,270 @@
+﻿{
+    "builds":  [
+                   {
+                       "medals":  {
+                                      "Medal of Bravery":  {
+                                                               "Level":  37
+                                                           },
+                                      "Medal of Charm":  {
+                                                             "Level":  9
+                                                         },
+                                      "Medal of Wisdom":  {
+                                                              "Level":  45
+                                                          },
+                                      "Medal of Heroism":  {
+                                                               "Level":  1
+                                                           }
+                                  },
+                       "eventId":  "guild-league",
+                       "images":  [
+                                      "/builds/assassincross/dave/Character Stat PvP.jpg",
+                                      "/builds/assassincross/dave/Armor Divine Armament Set.jpg",
+                                      "/builds/assassincross/dave/Weapon Divine Armament Set.jpg",
+                                      "/builds/assassincross/dave/Card.jpg",
+                                      "/builds/assassincross/dave/Feather Defense.jpg",
+                                      "/builds/assassincross/dave/Feather Attack.jpg",
+                                      "/builds/assassincross/dave/Medal.jpg",
+                                      "/builds/assassincross/dave/Moon Light Flower Damage Test.jpg",
+                                      "/builds/assassincross/dave/Orc Hero Damage Test.jpg"
+                                  ],
+                       "consumableBuffs":  [
+                                               "Blessing",
+                                               "Agi Up",
+                                               "Increase AGI"
+                                           ],
+                       "id":  "assassin-cross-pvp-guild-league",
+                       "tags":  [
+                                    "tank",
+                                    "survival"
+                                ],
+                       "author":  "Dave",
+                       "name":  "Anti Tank Assassin Cross",
+                       "categoryId":  "pvp",
+                       "equipment":  {
+                                         "armor":  {
+                                                       "refine":  10,
+                                                       "name":  "Dawn Armor",
+                                                       "cards":  [
+                                                                     "Marc Card+ â­â­"
+                                                                 ]
+                                                   },
+                                         "accessory2":  {
+                                                            "refine":  0,
+                                                            "name":  "Orleans Gloves",
+                                                            "cards":  [
+                                                                          "Mantis Card+",
+                                                                          "Wraith Card+ â­â­"
+                                                                      ]
+                                                        },
+                                         "facewear":  {
+                                                          "refine":  0,
+                                                          "name":  "Any Facewear",
+                                                          "cards":  [
+                                                                        "Goblin Leader Puppet Card+ â­",
+                                                                        "Rose Ornament+ â­"
+                                                                    ]
+                                                      },
+                                         "mouthewear":  {
+                                                            "refine":  0,
+                                                            "name":  "Any Mouthwear",
+                                                            "cards":  [
+                                                                          "Baby Pacifier Card+",
+                                                                          "Baby Pacifier Card+"
+                                                                      ]
+                                                        },
+                                         "weapon":  {
+                                                        "refine":  10,
+                                                        "name":  "Dawn Katar",
+                                                        "cards":  [
+                                                                      "Skeleton Worker Card+",
+                                                                      "Andre Card+ â­",
+                                                                      "Hydra Card+ â­â­"
+                                                                  ]
+                                                    },
+                                         "cloak":  {
+                                                       "refine":  10,
+                                                       "name":  "Dawn Mantle",
+                                                       "cards":  [
+                                                                     "Raydric Card+",
+                                                                     "Frilldora Card+"
+                                                                 ]
+                                                   },
+                                         "shoes":  {
+                                                       "refine":  10,
+                                                       "name":  "Dawn Boots",
+                                                       "cards":  [
+                                                                     "Matyr Card+ â­",
+                                                                     "Matyr Card+"
+                                                                 ]
+                                                   },
+                                         "headwear":  {
+                                                          "refine":  10,
+                                                          "name":  "Poring Hat",
+                                                          "cards":  [
+                                                                        "Poring Card",
+                                                                        "Poring Card"
+                                                                    ]
+                                                      },
+                                         "accessory1":  {
+                                                            "refine":  0,
+                                                            "name":  "Orleans Gloves",
+                                                            "cards":  [
+                                                                          "Mantis Card+",
+                                                                          "Wraith Card+ â­â­"
+                                                                      ]
+                                                        }
+                                     },
+                       "skills":  [
+                                      "Sonic Blow",
+                                      "Cloak",
+                                      "Envenom",
+                                      "Soul Destroyer",
+                                      "Meteor Assault"
+                                  ],
+                       "cards":  [
+                                     "Poring Card",
+                                     "Marc Card",
+                                     "Skeleton Worker Card",
+                                     "Thara Frog Card",
+                                     "Raydric Card",
+                                     "Matyr Card",
+                                     "Mantis Card"
+                                 ],
+                       "classId":  "assassin-cross",
+                       "description":  "High survivability PvP build for Guild League",
+                       "divineArmament":  {
+                                              "armor":  {
+                                                            "effects":  {
+                                                                            "set_effects":  [
+                                                                                                {
+                                                                                                    "pieces":  3,
+                                                                                                    "effects":  [
+                                                                                                                    "Max SP +5%",
+                                                                                                                    "Global CD -10%",
+                                                                                                                    "ATK +8%"
+                                                                                                                ]
+                                                                                                }
+                                                                                            ],
+                                                                            "refine":  [
+                                                                                           {
+                                                                                               "effects":  [
+                                                                                                               "AGI +1"
+                                                                                                           ],
+                                                                                               "level":  3
+                                                                                           },
+                                                                                           {
+                                                                                               "effects":  [
+                                                                                                               "ATK +2%"
+                                                                                                           ],
+                                                                                               "level":  6
+                                                                                           },
+                                                                                           {
+                                                                                               "effects":  [
+                                                                                                               "ATK +3%"
+                                                                                                           ],
+                                                                                               "level":  10
+                                                                                           },
+                                                                                           {
+                                                                                               "effects":  [
+                                                                                                               "PDMG Reduction +3%"
+                                                                                                           ],
+                                                                                               "level":  12
+                                                                                           },
+                                                                                           {
+                                                                                               "effects":  [
+                                                                                                               "Max HP +200"
+                                                                                                           ],
+                                                                                               "level":  15
+                                                                                           }
+                                                                                       ],
+                                                                            "base":  [
+                                                                                         "AGI +1",
+                                                                                         "ATK +2%"
+                                                                                     ]
+                                                                        },
+                                                            "set":  "Sprint Set"
+                                                        },
+                                              "seasonalStats":  {
+                                                                    "Elemental Chaos":  {
+                                                                                            "PermanentStats":  {
+                                                                                                                   "mdef":  38,
+                                                                                                                   "pdef":  95,
+                                                                                                                   "pvpdmgreduction":  190,
+                                                                                                                   "maxhp":  1425
+                                                                                                               },
+                                                                                            "Level":  19,
+                                                                                            "SeasonalStats":  {
+                                                                                                                  "PDMG/MDGM Bonus":  20,
+                                                                                                                  "PDMG/MDGM Reduction":  20
+                                                                                                              }
+                                                                                        }
+                                                                },
+                                              "weapon":  {
+                                                             "effects":  {
+                                                                             "base":  [
+                                                                                          "Max SP +8%",
+                                                                                          "Every 10 Max SP increases ATK by 1 (up to 45,000 Max SP)"
+                                                                                      ],
+                                                                             "refine":  [
+                                                                                            {
+                                                                                                "effects":  [
+                                                                                                                "Every 500 Max SP reduces Global CD by 1% (up to -20%)"
+                                                                                                            ],
+                                                                                                "level":  6
+                                                                                            },
+                                                                                            {
+                                                                                                "effects":  [
+                                                                                                                "Every 400 Max SP increases ATK by 1% (up to 45,000 Max SP)"
+                                                                                                            ],
+                                                                                                "level":  10
+                                                                                            },
+                                                                                            {
+                                                                                                "effects":  [
+                                                                                                                "Max SP +5%"
+                                                                                                            ],
+                                                                                                "level":  15
+                                                                                            }
+                                                                                        ]
+                                                                         },
+                                                             "set":  "Netherforce"
+                                                         }
+                                          },
+                       "feather":  {
+                                       "level":  10,
+                                       "name":  "Feather Defense"
+                                   },
+                       "guildSkills":  [
+                                           "Battle Orders",
+                                           "Regeneration",
+                                           "Sharp Eyes"
+                                       ],
+                       "stats":  {
+                                     "bonus":  {
+                                                   "vit":  20,
+                                                   "dex":  10,
+                                                   "agi":  5,
+                                                   "maxhp":  2000,
+                                                   "maxsp":  500,
+                                                   "str":  10
+                                               },
+                                     "allocated":  {
+                                                       "vit":  60,
+                                                       "dex":  50,
+                                                       "agi":  80,
+                                                       "luk":  30,
+                                                       "str":  90,
+                                                       "int":  1
+                                                   }
+                                 },
+                       "buildTypeId":  "anti-tank",
+                       "enchants":  [
+                                        "ATK +10",
+                                        "Crit +5"
+                                    ],
+                       "pet":  {
+                                   "level":  10,
+                                   "name":  "Poring"
+                               }
+                   }
+               ]
+}

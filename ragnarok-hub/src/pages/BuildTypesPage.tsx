@@ -1,5 +1,5 @@
 import { useParams, useNavigate } from "react-router-dom";
-import { loadBuilds } from "../utils/dataLoader";
+import { loadBuildsByClass } from "../utils/dataLoader";
 import Card from "../components/Card";
 import PageContainer from "../components/PageContainer";
 import { useState, useEffect } from "react";
@@ -10,9 +10,9 @@ export default function EventPage() {
   const [builds, setBuilds] = useState<any[]>([]);
 
   useEffect(() => {
-    loadBuilds().then((allBuilds) => {
+    loadBuildsByClass(classId || '').then((allBuilds) => {
       const filtered = allBuilds.filter(
-        (b) => b.classId === classId && b.categoryId === category && b.eventId === event
+        (b) => b.categoryId === category && b.eventId === event
       );
       console.log('Builds for', { classId, category, event }, ':', filtered);
       setBuilds(filtered);
