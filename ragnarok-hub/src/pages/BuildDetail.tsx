@@ -85,7 +85,15 @@ export default function BuildDetail() {
       )}
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
-        <StatsDisplay stats={build.stats} seasonalStats={currentSeasonalStats} />
+        <StatsDisplay
+          stats={build.stats}
+          seasonalStats={currentSeasonalStats}
+          classId={build.classId}
+          author={build.author}
+          eventId={build.eventId}
+          categoryId={build.categoryId}
+          buildName={build.name}
+        />
         <SkillsDisplay skills={build.skills || []} />
       </div>
 

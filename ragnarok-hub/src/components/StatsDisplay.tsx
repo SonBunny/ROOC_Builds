@@ -1,24 +1,28 @@
+import { useState } from 'react';
 import type { Stats, AllocatedStats, BonusStats } from '../types/builds';
+import StatsModal from './StatsModal';
 
 interface StatsDisplayProps {
   stats: Stats;
   seasonalStats?: any;
+  classId?: string;
+  author?: string;
+  eventId?: string;
+  categoryId?: string;
+  buildName?: string;
 }
 
-function getTotalStat(allocated: number, bonus?: number): number {
-  return allocated + (bonus || 0);
-}
-
-export default function StatsDisplay({ stats, seasonalStats }: StatsDisplayProps) {
+export default function StatsDisplay({ stats, seasonalStats, classId, author, eventId, categoryId, buildName }: StatsDisplayProps) {
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const { allocated, bonus } = stats;
 
   const totalStats: AllocatedStats = {
-    str: getTotalStat(allocated.str, bonus?.str),
-    agi: getTotalStat(allocated.agi, bonus?.agi),
-    vit: getTotalStat(allocated.vit, bonus?.vit),
-    int: getTotalStat(allocated.int, bonus?.int),
-    dex: getTotalStat(allocated.dex, bonus?.dex),
-    luk: getTotalStat(allocated.luk, bonus?.luk),
+    str: allocated.str + (bonus?.str || 0),
+    agi: allocated.agi + (bonus?.agi || 0),
+    vit: allocated.vit + (bonus?.vit || 0),
+    int: allocated.int + (bonus?.int || 0),
+    dex: allocated.dex + (bonus?.dex || 0),
+    luk: allocated.luk + (bonus?.luk || 0),
   };
 
   const statConfig = [
@@ -31,29 +35,50 @@ export default function StatsDisplay({ stats, seasonalStats }: StatsDisplayProps
   ];
 
   return (
-    <div className="bg-slate-800 rounded-xl p-6 border border-slate-700">
-      <h3 className="text-xl font-bold mb-4 text-white">Stats</h3>
-      <div className="space-y-3">
+    <>
+      <div className="bg-slate-800 rounded-xl p-6 border border-slate-700">
+        <div className="flex justify-between items-center mb-4">
+          <h3 className="text-xl font-bold text-white">Stats</h3>
+          {classId && author && eventId && buildName && (
+            <button
+              onClick={() => setIsModalOpen(true)}
+              className="px-3 py-1 bg-blue-600 hover:bg-blue-500 rounded-lg text-white text-sm font-semibold transition"
+            >
+              View Details
+            </button>
+          )}
+        </div>
+        <div className="space-y-3">
+        <div className="flex items-center gap-3 text-xs text-gray-400 font-semibold">
+          <span className="w-12"></span>
+          <span className="flex-1"></span>
+          <span className="w-16 text-center flex items-center justify-center gap-1">
+            Allocated
+            <span className="text-blue-400 font-bold cursor-help hover:text-blue-300 transition" title="Stats you manually allocate">?</span>
+          </span>
+          <span className="w-16 text-center flex items-center justify-center gap-1">
+            Bonus
+            <span className="text-green-400 font-bold cursor-help hover:text-green-300 transition" title="Stats from equipment, cards, job bonuses, and other sources">?</span>
+          </span>
+        </div>
         {statConfig.map((stat) => {
-          const value = totalStats[stat.key];
-          const baseValue = allocated[stat.key];
+          const allocatedValue = allocated[stat.key];
           const bonusValue = bonus?.[stat.key] || 0;
+          const totalValue = totalStats[stat.key];
 
           return (
             <div key={stat.key} className="flex items-center gap-3">
               <span className="w-12 font-bold text-gray-300">{stat.label}</span>
-              <div className="flex-1 bg-slate-700 rounded-full h-4 overflow-hidden">
+              <div className="flex-1 bg-slate-700 rounded-full h-4 overflow-hidden relative">
                 <div
-                  className={`${stat.color} h-full transition-all duration-300`}
-                  style={{ width: `${(value / 99) * 100}%` }}
-                />
+                  className={`${stat.color} h-full transition-all duration-300 flex items-center justify-center`}
+                  style={{ width: `${(totalValue / 99) * 100}%` }}
+                >
+                  <span className="text-xs font-bold text-white absolute left-1/2 -translate-x-1/2">{totalValue}</span>
+                </div>
               </div>
-              <span className="w-16 text-right font-mono text-white">
-                {value}
-                {bonusValue > 0 && (
-                  <span className="text-xs text-green-400 ml-1">(+{bonusValue})</span>
-                )}
-              </span>
+              <span className="w-16 text-center font-mono text-white">{allocatedValue}</span>
+              <span className="w-16 text-center font-mono text-green-400">{bonusValue > 0 ? `+${bonusValue}` : '-'}</span>
             </div>
           );
         })}
@@ -74,6 +99,16 @@ export default function StatsDisplay({ stats, seasonalStats }: StatsDisplayProps
           </div>
         )}
       </div>
-    </div>
+      </div>
+      <StatsModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        classId={classId || ''}
+        author={author || ''}
+        eventId={eventId || ''}
+        categoryId={categoryId || ''}
+        buildName={buildName || ''}
+      />
+    </>
   );
 }

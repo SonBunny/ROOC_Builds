@@ -65,13 +65,70 @@
           "cards": []
         }
       },
+      "enchants": {
+        "headwear": [
+            "PvP Technique Lv.1",
+            "MATK +30",
+            "MATK +30"
+            ], 
+        "facewear": [
+            "Max SP +55",
+            "VIT +4, Max HP +90",
+            "Max SP +55"
+        ],
+        "mouthwear": [
+            "Max SP +55",
+            "MDEF +5, Max HP +90",
+            "Max SP +55"
+            ],
+        "weapon": [
+            "Magic Boon Lv.3",
+            "MATK +4.40%",
+            "INT +9, Max HP +185"
+            ],
+        "armor": [
+            "Vitality Boost Lv.3",
+            "Max HP +530",
+            "VIT +6, Max HP +130"
+            ],
+        "cloak": [
+            "Vitality Boost Lv.3",
+            "Max HP +440",
+            "VIT +5, Max HP +100"
+            ],
+        "shoes": [
+            "Vitality Boost Lv.3",
+            "CRIT RES +5, MaxHP +80",
+            "VIT +4, Max HP +80"
+            ],
+        "accessory1": [
+            "Magic Boon Lv.3",
+            "MATK +3.10%",
+            "DEX +6, Max HP +120"
+            ],
+        "accessory2": [
+            "Magic Boon Lv.3",
+            "MATK +3.20%",
+            "AGI +6, Max HP +125"
+        ],
+        "backwear": [
+            "PvP Technique Lv.3",
+            "Ignore MDEF +5, Max HP +90",
+            "Ignore MDEF +5, Max HP +90"
+        ],
+        "costume": [
+            "PvP Technique Lv.3",
+            "DEX +5, Max HP +100",
+            "MATK +26"
+        ]
+      },
       "skills":  [
-                                      "Sonic Blow",
-                                      "Cloak",
-                                      "Envenom",
-                                      "Soul Destroyer",
-                                      "Meteor Assault"
-                                  ],
+                 "Sonic Blow",
+                 "Cloak",
+                 "Envenom",
+                 "Soul Destroyer",
+                 "Meteor Assault"
+                ],
 
       "name": "Storm Gust High Wizard",
 
@@ -86,8 +143,16 @@
               "pvpdmgreduction": 190
             },
             "Seasonal Stats": {
-              "PDMG/MDGM Bonus": 20,
-              "PDMG/MDGM Reduction": 20
+                "PDMG/MDGM Bonus": 20,
+                "PDMG/MDGM Reduction": 20,
+                "DMG vs Wind Enemies": 20,
+                "DMG vs Earth Enemies": 20,
+                "DMG vs Fire Enemies": 20,
+                "DMG vs Water Enemies": 20,
+                "DMG Reduction vs Wind Enemies": 20,
+                "DMG Reduction vs Earth Enemies": 20,
+                "DMG Reduction vs Fire Enemies": 20,
+                "DMG Reduction vs Water Enemies": 20
             }
           }
         },
@@ -155,6 +220,79 @@
           ]
         }
       },
+      
+      "feather": { 
+            "Valkyrie - Duel": { 
+                "feather1": "[MIX] Light Tier 7",
+                "feather2": "[ATK] Faith Tier 13]",
+                "feather3": "[ATK] Day Tier 7]",
+                "feather4": "[ATK] Space Tier 7]",
+                "feather5": "[ATK] Time Tier 7]" 
+                },
+            "Valkyrie - Wisdom": {
+                "feather1": "[MIX] Light Tier 2",
+                "feather2": "[MIX] Dark Tier 2]",
+                "feather3": "[MIX] Truth Tier 3]",
+                "feather4": "[DEF] Terra Tier 7]",
+                "feather5": "[DEF] Divine Tier 4]" 
+                }, 
+            "Valkyrie - Rune": {
+                "feather1": "[MIX] Light Tier 6",
+                "feather2": "[ATK] Faith Tier 13]",
+                "feather3": "[ATK] Day Tier 7]",
+                "feather4": "[ATK] Space Tier 7]",
+                "feather5": "[ATK] Time Tier 7]" 
+                }, 
+            "Valkyrie - Fortitude": {
+                "feather1": "[MIX] Light Tier 2",
+                "feather2": "[MIX] Dark Tier 2]",
+                "feather3": "[MIX] Truth Tier 2]",
+                "feather4": "[DEF] Terra Tier 7]",
+                "feather5": "[DEF] Divine Tier 3]"
+                },
+            "Valkyrie - Weapon": {
+                "feather1": "[MIX] Light Tier 6",
+                "feather2": "[ATK] Faith Tier 12]",
+                "feather3": "[ATK] Day Tier 7]",
+                "feather4": "[ATK] Space Tier 7]",
+                "feather5": "[ATK] Time Tier 6]"
+                },
+            "Valkyrie - Mist": {
+                "feather1": "[MIX] Light Tier 2",
+                "feather2": "[MIX] Dark Tier 2]",
+                "feather3": "[MIX] Truth Tier 2]",
+                "feather4": "[DEF] Terra Tier 7]",
+                "feather5": "[DEF] Divine Tier 3]"
+                },
+            "Valkyrie - Intimidation": {
+                "feather1": "[MIX] Light Tier 6",
+                "feather2": "[ATK] Faith Tier 12]",
+                "feather3": "[ATK] Day Tier 7]",
+                "feather4": "[ATK] Space Tier 6]",
+                "feather5": "[ATK] Time Tier 6]"
+                },
+            "Valkyrie - Relic": {
+                "feather1": "[MIX] Light Tier 1",
+                "feather2": "[MIX] Dark Tier 1]",
+                "feather3": "[MIX] Truth Tier 2]",
+                "feather4": "[DEF] Terra Tier 7]",
+                "feather5": "[DEF] Divine Tier 3]"
+                }, 
+            "Valkyrie - Omni": {
+                "feather1": "[MIX] Light Tier 5",
+                "feather2": "[ATK] Faith Tier 12]",
+                "feather3": "[ATK] Day Tier 7]",
+                "feather4": "[ATK] Space Tier 6]",
+                "feather5": "[ATK] Time Tier 6]" 
+                 }, 
+            "Valkyrie - Conqueror": {
+                "feather1": "[MIX] Light Tier 1",
+                "feather2": "[MIX] Dark Tier 1]",
+                "feather3": "[MIX] Truth Tier 2]",
+                "feather4": "[DEF] Terra Tier 6]",
+                "feather5": "[DEF] Divine Tier 3]"
+                }
+        },
 
       "author": "DreamShader",
       "description": "High Damage PvP build for Guild League",
