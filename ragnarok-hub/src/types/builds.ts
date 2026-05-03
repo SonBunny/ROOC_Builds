@@ -92,13 +92,13 @@ export interface DivineArmamentSet {
 
 export interface SeasonalStat {
   Level?: number;
-  PermanentStats?: {
+  "Permanent Stats"?: {
     pdef?: number;
     mdef?: number;
     maxhp?: number;
     pvpdmgreduction?: number;
   };
-  SeasonalStats?: {
+  "Seasonal Stats"?: {
     [key: string]: number;
   };
 }
@@ -116,6 +116,20 @@ export interface Medals {
   };
 }
 
+export interface Enchants {
+  [slot: string]: string[];
+}
+
+export interface Feather {
+  [featherName: string]: {
+    feather1: string;
+    feather2: string;
+    feather3: string;
+    feather4: string;
+    feather5: string;
+  };
+}
+
 export interface Build {
   id: string;
   classId: string;
@@ -129,12 +143,12 @@ export interface Build {
   stats: Stats;
   equipment: Equipment;
   skills?: string[];
-  feather?: { name: string; level: number };
+  feather?: Feather;
   pet?: { name: string; level: number };
   medals?: Medals;
   divineArmament?: DivineArmament;
   cards?: string[];
-  enchants?: string[];
+  enchants?: Enchants;
   guildSkills?: string[];
   consumableBuffs?: string[];
   images?: string[];

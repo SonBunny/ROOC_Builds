@@ -14,6 +14,7 @@ export default function BuildDetail() {
   const [build, setBuild] = useState<Build | null>(null);
   const [seasons, setSeasons] = useState<Season[]>([]);
   const [selectedSeason, setSelectedSeason] = useState<string | null>(null);
+  const [statsTab, setStatsTab] = useState<'permanent' | 'seasonal'>('permanent');
 
   useEffect(() => {
     // Find the correct classId by matching buildId prefix against known classes
@@ -43,8 +44,9 @@ export default function BuildDetail() {
 
   const isNightmareTemple = build.eventId === 'nightmare-temple';
   const hasSeasonalStats = build.divineArmament?.seasonalStats && Object.keys(build.divineArmament.seasonalStats).length > 0;
-  const currentSeasonalStats = selectedSeason && build.divineArmament?.seasonalStats
-    ? build.divineArmament.seasonalStats[selectedSeason]
+  // For Nightmare Temple, use selected season; for others, use the first available season
+  const currentSeasonalStats = hasSeasonalStats
+    ? (isNightmareTemple && selectedSeason ? build.divineArmament.seasonalStats[selectedSeason] : Object.values(build.divineArmament.seasonalStats)[0])
     : undefined;
 
   return (
@@ -84,10 +86,17 @@ export default function BuildDetail() {
         />
       )}
 
+      {hasSeasonalStats && !isNightmareTemple && (
+        <div className="mb-6 bg-slate-800 rounded-xl p-4 border border-slate-700">
+          <div className="text-sm text-gray-400">
+            Season: {Object.keys(build.divineArmament?.seasonalStats || {})[0] || 'Unknown'}
+          </div>
+        </div>
+      )}
+
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
         <StatsDisplay
           stats={build.stats}
-          seasonalStats={currentSeasonalStats}
           classId={build.classId}
           author={build.author}
           eventId={build.eventId}
@@ -99,9 +108,51 @@ export default function BuildDetail() {
 
       <EquipmentDisplay equipment={build.equipment} />
 
+      {build.enchants && Object.keys(build.enchants).length > 0 && (
+        <div className="mt-6 bg-slate-800 rounded-xl p-6 border border-slate-700">
+          <h3 className="text-xl font-bold mb-4 text-white">Enchants</h3>
+          <div className="space-y-4">
+            {Object.entries(build.enchants).map(([slot, enchantList]) => (
+              <div key={slot} className="bg-slate-700 rounded-lg p-4">
+                <div className="text-white font-bold mb-2 capitalize">{slot}</div>
+                <div className="space-y-1">
+                  {enchantList.map((enchant, index) => (
+                    <div key={index} className="text-sm text-gray-300">
+                      {enchant}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
       {currentSeasonalStats && (
         <div className="mt-6 bg-slate-800 rounded-xl p-6 border border-slate-700">
           <h3 className="text-xl font-bold mb-4 text-white">Seasonal Stats</h3>
+          <div className="flex gap-2 mb-4">
+            <button
+              onClick={() => setStatsTab('permanent')}
+              className={`px-4 py-2 rounded-lg font-semibold transition ${
+                statsTab === 'permanent'
+                  ? 'bg-blue-600 text-white'
+                  : 'bg-slate-700 text-gray-300 hover:bg-slate-600'
+              }`}
+            >
+              Permanent Stats
+            </button>
+            <button
+              onClick={() => setStatsTab('seasonal')}
+              className={`px-4 py-2 rounded-lg font-semibold transition ${
+                statsTab === 'seasonal'
+                  ? 'bg-blue-600 text-white'
+                  : 'bg-slate-700 text-gray-300 hover:bg-slate-600'
+              }`}
+            >
+              Seasonal Stats
+            </button>
+          </div>
           <div className="space-y-3">
             {currentSeasonalStats.Level && (
               <div className="flex items-center gap-3">
@@ -109,39 +160,39 @@ export default function BuildDetail() {
                 <span className="text-white font-bold">{currentSeasonalStats.Level}</span>
               </div>
             )}
-            {currentSeasonalStats.PermanentStats && (
+            {statsTab === 'permanent' && currentSeasonalStats["Permanent Stats"] && (
               <div className="space-y-2">
-                <div className="text-sm text-gray-400 font-semibold">Permanent Stats</div>
-                {currentSeasonalStats.PermanentStats.pdef && (
+                <div className="text-sm text-gray-400 font-semibold">Permanent Stats (All Seasons)</div>
+                {currentSeasonalStats["Permanent Stats"].pdef && (
                   <div className="flex items-center gap-3">
                     <span className="w-32 text-gray-400">PDEF</span>
-                    <span className="text-white">+{currentSeasonalStats.PermanentStats.pdef}</span>
+                    <span className="text-white">+{currentSeasonalStats["Permanent Stats"].pdef}</span>
                   </div>
                 )}
-                {currentSeasonalStats.PermanentStats.mdef && (
+                {currentSeasonalStats["Permanent Stats"].mdef && (
                   <div className="flex items-center gap-3">
                     <span className="w-32 text-gray-400">MDEF</span>
-                    <span className="text-white">+{currentSeasonalStats.PermanentStats.mdef}</span>
+                    <span className="text-white">+{currentSeasonalStats["Permanent Stats"].mdef}</span>
                   </div>
                 )}
-                {currentSeasonalStats.PermanentStats.maxhp && (
+                {currentSeasonalStats["Permanent Stats"].maxhp && (
                   <div className="flex items-center gap-3">
                     <span className="w-32 text-gray-400">Max HP</span>
-                    <span className="text-green-400">+{currentSeasonalStats.PermanentStats.maxhp}</span>
+                    <span className="text-green-400">+{currentSeasonalStats["Permanent Stats"].maxhp}</span>
                   </div>
                 )}
-                {currentSeasonalStats.PermanentStats.pvpdmgreduction && (
+                {currentSeasonalStats["Permanent Stats"].pvpdmgreduction && (
                   <div className="flex items-center gap-3">
                     <span className="w-32 text-gray-400">PvP DMG Reduction</span>
-                    <span className="text-blue-400">+{currentSeasonalStats.PermanentStats.pvpdmgreduction}%</span>
+                    <span className="text-blue-400">+{currentSeasonalStats["Permanent Stats"].pvpdmgreduction}%</span>
                   </div>
                 )}
               </div>
             )}
-            {currentSeasonalStats.SeasonalStats && (
+            {statsTab === 'seasonal' && currentSeasonalStats["Seasonal Stats"] && (
               <div className="space-y-2">
-                <div className="text-sm text-gray-400 font-semibold">Seasonal Stats</div>
-                {Object.entries(currentSeasonalStats.SeasonalStats).map(([stat, value]) => (
+                <div className="text-sm text-gray-400 font-semibold">Seasonal Stats (Current Season Only)</div>
+                {Object.entries(currentSeasonalStats["Seasonal Stats"]).map(([stat, value]) => (
                   <div key={stat} className="flex items-center gap-3">
                     <span className="w-32 text-gray-400">{stat}</span>
                     <span className="text-white">+{value}</span>
@@ -155,9 +206,20 @@ export default function BuildDetail() {
 
       {build.feather && (
         <div className="mt-6 bg-slate-800 rounded-xl p-6 border border-slate-700">
-          <h3 className="text-xl font-bold mb-4 text-white">Feather</h3>
-          <div className="text-white">
-            {build.feather.name} (Level {build.feather.level})
+          <h3 className="text-xl font-bold mb-4 text-white">Feathers</h3>
+          <div className="space-y-4">
+            {Object.entries(build.feather).map(([featherName, featherData]) => (
+              <div key={featherName} className="bg-slate-700 rounded-lg p-4">
+                <div className="text-white font-bold mb-2">{featherName}</div>
+                <div className="grid grid-cols-1 md:grid-cols-5 gap-2 text-sm">
+                  <div className="text-gray-400">Slot 1: <span className="text-white">{featherData.feather1}</span></div>
+                  <div className="text-gray-400">Slot 2: <span className="text-white">{featherData.feather2}</span></div>
+                  <div className="text-gray-400">Slot 3: <span className="text-white">{featherData.feather3}</span></div>
+                  <div className="text-gray-400">Slot 4: <span className="text-white">{featherData.feather4}</span></div>
+                  <div className="text-gray-400">Slot 5: <span className="text-white">{featherData.feather5}</span></div>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       )}
@@ -281,22 +343,6 @@ export default function BuildDetail() {
                 className="px-3 py-1 bg-green-600 text-white rounded-full text-sm"
               >
                 {card}
-              </span>
-            ))}
-          </div>
-        </div>
-      )}
-
-      {build.enchants && build.enchants.length > 0 && (
-        <div className="mt-6 bg-slate-800 rounded-xl p-6 border border-slate-700">
-          <h3 className="text-xl font-bold mb-4 text-white">Enchants</h3>
-          <div className="flex flex-wrap gap-2">
-            {build.enchants.map((enchant, index) => (
-              <span
-                key={index}
-                className="px-3 py-1 bg-cyan-600 text-white rounded-full text-sm"
-              >
-                {enchant}
               </span>
             ))}
           </div>

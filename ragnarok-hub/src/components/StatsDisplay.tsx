@@ -1,10 +1,9 @@
 import { useState } from 'react';
-import type { Stats, AllocatedStats, SeasonalStat } from '../types/builds';
+import type { Stats, AllocatedStats } from '../types/builds';
 import StatsModal from './StatsModal';
 
 interface StatsDisplayProps {
   stats: Stats;
-  seasonalStats?: SeasonalStat;
   classId?: string;
   author?: string;
   eventId?: string;
@@ -12,7 +11,7 @@ interface StatsDisplayProps {
   buildName?: string;
 }
 
-export default function StatsDisplay({ stats, seasonalStats, classId, author, eventId, categoryId, buildName }: StatsDisplayProps) {
+export default function StatsDisplay({ stats, classId, author, eventId, categoryId, buildName }: StatsDisplayProps) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const { allocated, bonus } = stats;
 
@@ -94,45 +93,6 @@ export default function StatsDisplay({ stats, seasonalStats, classId, author, ev
               <div className="flex items-center gap-3">
                 <span className="w-12 font-bold text-gray-300">SP</span>
                 <span className="text-blue-400">+{bonus.maxsp}</span>
-              </div>
-            )}
-          </div>
-        )}
-        {seasonalStats && (
-          <div className="mt-4 pt-4 border-t border-slate-600">
-            <div className="text-sm text-gray-400 font-semibold mb-2">Seasonal Stats</div>
-            {seasonalStats.Level && (
-              <div className="flex items-center gap-3 mb-2">
-                <span className="w-12 font-bold text-gray-300">Lvl</span>
-                <span className="text-white">{seasonalStats.Level}</span>
-              </div>
-            )}
-            {seasonalStats.PermanentStats && (
-              <div className="space-y-1">
-                {seasonalStats.PermanentStats.pdef && (
-                  <div className="flex items-center gap-3">
-                    <span className="w-12 font-bold text-gray-300">PDEF</span>
-                    <span className="text-white">+{seasonalStats.PermanentStats.pdef}</span>
-                  </div>
-                )}
-                {seasonalStats.PermanentStats.mdef && (
-                  <div className="flex items-center gap-3">
-                    <span className="w-12 font-bold text-gray-300">MDEF</span>
-                    <span className="text-white">+{seasonalStats.PermanentStats.mdef}</span>
-                  </div>
-                )}
-                {seasonalStats.PermanentStats.maxhp && (
-                  <div className="flex items-center gap-3">
-                    <span className="w-12 font-bold text-gray-300">HP</span>
-                    <span className="text-green-400">+{seasonalStats.PermanentStats.maxhp}</span>
-                  </div>
-                )}
-                {seasonalStats.PermanentStats.pvpdmgreduction && (
-                  <div className="flex items-center gap-3">
-                    <span className="w-12 font-bold text-gray-300">PvP</span>
-                    <span className="text-blue-400">+{seasonalStats.PermanentStats.pvpdmgreduction}%</span>
-                  </div>
-                )}
               </div>
             )}
           </div>
