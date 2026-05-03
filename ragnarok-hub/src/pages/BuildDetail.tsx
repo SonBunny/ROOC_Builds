@@ -111,13 +111,13 @@ export default function BuildDetail() {
       {build.enchants && Object.keys(build.enchants).length > 0 && (
         <div className="mt-6 bg-slate-800 rounded-xl p-6 border border-slate-700">
           <h3 className="text-xl font-bold mb-4 text-white">Enchants</h3>
-          <div className="space-y-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {Object.entries(build.enchants).map(([slot, enchantList]) => (
               <div key={slot} className="bg-slate-700 rounded-lg p-4">
-                <div className="text-white font-bold mb-2 capitalize">{slot}</div>
+                <div className="text-sm text-gray-400 mb-1 capitalize">{slot}</div>
                 <div className="space-y-1">
                   {enchantList.map((enchant, index) => (
-                    <div key={index} className="text-sm text-gray-300">
+                    <div key={index} className="text-sm text-white">
                       {enchant}
                     </div>
                   ))}

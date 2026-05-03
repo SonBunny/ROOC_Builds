@@ -5,6 +5,7 @@ import EventsPage from "./pages/EventsPage";
 import BuildTypesPage from "./pages/BuildTypesPage";
 import BuildDetail from "./pages/BuildDetail";
 import Navigation from "./components/Navigation";
+import { Analytics } from "@vercel/analytics/next";
 
 function App() {
   return (
@@ -17,7 +18,9 @@ function App() {
         <Route path="/class/:classId/:category/:event" element={<BuildTypesPage />} />
         <Route path="/build/:buildId" element={<BuildDetail />} />
       </Routes>
+      <Analytics />
     </BrowserRouter>
+    
   );
 }
 
