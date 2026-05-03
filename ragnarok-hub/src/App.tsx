@@ -5,7 +5,7 @@ import EventsPage from "./pages/EventsPage";
 import BuildTypesPage from "./pages/BuildTypesPage";
 import BuildDetail from "./pages/BuildDetail";
 import Navigation from "./components/Navigation";
-import { Analytics } from "@vercel/analytics/next";
+import { Analytics } from "@vercel/analytics/react"
 
 function App() {
   return (
