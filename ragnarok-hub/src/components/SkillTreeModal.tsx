@@ -41,7 +41,9 @@ export default function SkillTreeModal({ skillTrees, buildSkills = [], onClose }
 
   // Build tree structure and calculate levels
   const buildTreeStructure = () => {
-    const skillMap = new Map(allSkills.map(s => [s.id, { skill: s, level: 0, children: [], prerequisites: [] }]));
+    const skillMap = new Map<string, TreeNode>(
+      allSkills.map(s => [s.id, { skill: s, level: 0, children: [], prerequisites: [] }])
+    );
 
     // Set up relationships
     allSkills.forEach(skill => {
