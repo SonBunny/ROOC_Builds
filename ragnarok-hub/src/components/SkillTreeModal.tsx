@@ -30,6 +30,7 @@ export default function SkillTreeModal({ skillTrees, buildSkills = [], onClose }
   const [dragStart, setDragStart] = useState({ x: 0, y: 0 });
   const [initialPinchDistance, setInitialPinchDistance] = useState<number | null>(null);
   const [initialScale, setInitialScale] = useState(1);
+  const [initialPinchCenter, setInitialPinchCenter] = useState<{ x: number; y: number } | null>(null);
 
   // Get all skills from all trees
   const allSkills = skillTrees.flatMap(tree => tree.skills);
@@ -180,20 +181,54 @@ export default function SkillTreeModal({ skillTrees, buildSkills = [], onClose }
 
   const treeBounds = calculateTreeBounds();
 
-  // Calculate center position
+  // Calculate center position and fit scale
   const calculateCenterPosition = () => {
-    const containerWidth = 3000; // From minWidth
-    const containerHeight = 1000; // From minHeight
-    const centerX = (containerWidth - treeBounds.width) / 2 - treeBounds.minX;
-    const centerY = (containerHeight - treeBounds.height) / 2 - treeBounds.minY;
-    return { x: centerX, y: centerY };
+    const container = containerRef.current;
+    if (!container) return { x: 0, y: 0, scale: 1.4 };
+
+    const containerWidth = container.clientWidth;
+    const containerHeight = container.clientHeight;
+
+    // Calculate the scale needed to fit the tree in the viewport with some padding
+    const padding = 50;
+    const scaleX = (containerWidth - padding * 2) / treeBounds.width;
+    const scaleY = (containerHeight - padding * 2) / treeBounds.height;
+    const fitScale = Math.min(scaleX, scaleY, 1.4); // Don't exceed 1.4x
+
+    // Calculate the center of the tree
+    const treeCenterX = treeBounds.minX + treeBounds.width / 2;
+    const treeCenterY = treeBounds.minY + treeBounds.height / 2;
+
+    // Calculate position to center the tree in the viewport
+    const centerX = (containerWidth / 2) - treeCenterX * fitScale;
+    const centerY = (containerHeight / 2) - treeCenterY * fitScale;
+
+    return { x: centerX, y: centerY, scale: fitScale };
   };
 
   // Initialize position to center
   useEffect(() => {
-    const centerPos = calculateCenterPosition();
-    setPosition(centerPos);
-  }, []);
+    // Small delay to ensure container has actual dimensions
+    const timer = setTimeout(() => {
+      const centerPos = calculateCenterPosition();
+      setPosition({ x: centerPos.x, y: centerPos.y });
+      setScale(centerPos.scale);
+    }, 100);
+
+    return () => clearTimeout(timer);
+  }, []); // Only run on mount
+
+  // Recalculate center on window resize
+  useEffect(() => {
+    const handleResize = () => {
+      const centerPos = calculateCenterPosition();
+      setPosition({ x: centerPos.x, y: centerPos.y });
+      setScale(centerPos.scale);
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []); // Only run on mount
 
   // Drag handlers
   const handleMouseDown = (e: React.MouseEvent) => {
@@ -225,6 +260,10 @@ export default function SkillTreeModal({ skillTrees, buildSkills = [], onClose }
       // Pinch gesture
       setInitialPinchDistance(getDistance(e.touches[0], e.touches[1]));
       setInitialScale(scale);
+      // Calculate center of pinch
+      const centerX = (e.touches[0].clientX + e.touches[1].clientX) / 2;
+      const centerY = (e.touches[0].clientY + e.touches[1].clientY) / 2;
+      setInitialPinchCenter({ x: centerX, y: centerY });
     } else if (e.touches.length === 1) {
       // Single touch - drag
       setIsDragging(true);
@@ -234,13 +273,20 @@ export default function SkillTreeModal({ skillTrees, buildSkills = [], onClose }
   };
 
   const handleTouchMove = (e: React.TouchEvent) => {
-    if (e.touches.length === 2 && initialPinchDistance !== null) {
+    if (e.touches.length === 2 && initialPinchDistance !== null && initialPinchCenter) {
       // Pinch to zoom
       e.preventDefault();
       const currentDistance = getDistance(e.touches[0], e.touches[1]);
       const scaleChange = currentDistance / initialPinchDistance;
       const newScale = Math.max(0.5, Math.min(2, initialScale * scaleChange));
+
+      // Calculate position to keep pinch center stationary
+      const scaleRatio = newScale / scale;
+      const newX = initialPinchCenter.x - (initialPinchCenter.x - position.x) * scaleRatio;
+      const newY = initialPinchCenter.y - (initialPinchCenter.y - position.y) * scaleRatio;
+
       setScale(newScale);
+      setPosition({ x: newX, y: newY });
     } else if (e.touches.length === 1 && isDragging) {
       // Single touch - drag
       e.preventDefault();
@@ -255,6 +301,7 @@ export default function SkillTreeModal({ skillTrees, buildSkills = [], onClose }
   const handleTouchEnd = () => {
     setIsDragging(false);
     setInitialPinchDistance(null);
+    setInitialPinchCenter(null);
   };
 
   // Zoom handlers
@@ -267,16 +314,32 @@ export default function SkillTreeModal({ skillTrees, buildSkills = [], onClose }
   };
 
   const handleResetZoom = () => {
-    setScale(1.4);
     const centerPos = calculateCenterPosition();
-    setPosition(centerPos);
+    setPosition({ x: centerPos.x, y: centerPos.y });
+    setScale(centerPos.scale);
   };
 
   // Wheel zoom handler
   const handleWheel = (e: React.WheelEvent) => {
     e.preventDefault();
+
+    const container = containerRef.current;
+    if (!container) return;
+
+    const rect = container.getBoundingClientRect();
+    const mouseX = e.clientX - rect.left;
+    const mouseY = e.clientY - rect.top;
+
     const delta = e.deltaY > 0 ? -0.1 : 0.1;
-    setScale(prev => Math.max(0.5, Math.min(2, prev + delta)));
+    const newScale = Math.max(0.5, Math.min(2, scale + delta));
+
+    // Calculate position to keep mouse point stationary
+    const scaleRatio = newScale / scale;
+    const newX = mouseX - (mouseX - position.x) * scaleRatio;
+    const newY = mouseY - (mouseY - position.y) * scaleRatio;
+
+    setScale(newScale);
+    setPosition({ x: newX, y: newY });
   };
 
   // Draw connection lines (horizontal layout)
@@ -399,7 +462,7 @@ export default function SkillTreeModal({ skillTrees, buildSkills = [], onClose }
             <div
               style={{
                 transform: `translate(${position.x}px, ${position.y}px) scale(${scale})`,
-                transformOrigin: 'center center',
+                transformOrigin: '0 0',
                 transition: isDragging ? 'none' : 'transform 0.1s ease-out',
                 minWidth: '3000px',
                 minHeight: '1000px',

@@ -1,1 +1,341 @@
-﻿{"builds":[]}
+﻿{
+  "builds": [
+    {
+      "id": "ministrel-pvp-guild-league-tank-healer",
+
+      "equipment": {
+        "headwear": {
+          "refine": 0,
+          "name": "Any Headwear",
+          "cards": ["Cramp Card+ ⭐", "Cramp Card+ ⭐"]
+        },
+        "facewear": {
+          "refine": 0,
+          "name": "Any Facewear",
+          "cards": ["Goblin Leader Puppet Card+ ⭐", "Rose Ornament+ ⭐"]
+        },
+        "mouthwear": {
+          "refine": 0,
+          "name": "Any Mouthwear",
+          "cards": ["Baby Pacifier Card+", "Baby Pacifier Card+"]
+        },
+        "weapon": {
+          "refine": 14,
+          "name": "Dawn Staff",
+          "cards": ["Hydra Card+", "Illusion Hydra Card+ ⭐", "Boa Card+ ⭐⭐"]
+        },
+        "shield": {
+          "refine": 0,
+          "name": "",
+          "cards": []
+        },
+        "armor": {
+          "refine": 12,
+          "name": "Dawn Armor",
+          "cards": ["Baby Desert Wolf Card+ ⭐⭐"]
+        },
+        "cloak": {
+          "refine": 11,
+          "name": "Dawn Mantle",
+          "cards": ["Orc Baby Card+", "Frilldora Card+"]
+        },
+        "shoes": {
+          "refine": 10,
+          "name": "Dawn Boots",
+          "cards": ["Verit Card+ ⭐", "Verit Card+"]
+        },
+        "accessory1": {
+          "refine": 11,
+          "name": "Orleans Gloves",
+          "cards": ["Tarou Card+", "Wraith Card+ ⭐⭐"]
+        },
+        "accessory2": {
+          "refine": 10,
+          "name": "Orleans Gloves",
+          "cards": ["Smokie Card+", "Wraith Card+ ⭐⭐"]
+        },
+        "backwear": {
+          "refine": 0,
+          "name": "Any Backwear",
+          "cards": []
+        },
+        "costume": {
+          "refine": 0,
+          "name": "Any Costume",
+          "cards": []
+        }
+      },
+      "enchants": {
+        "headwear": [
+            "PvP Technique Lv.1",
+            "MATK +30",
+            "MATK +30"
+            ], 
+        "facewear": [
+            "Max SP +55",
+            "VIT +4, Max HP +90",
+            "Max SP +55"
+        ],
+        "mouthwear": [
+            "Max SP +55",
+            "MDEF +5, Max HP +90",
+            "Max SP +55"
+            ],
+        "weapon": [
+            "Magic Boon Lv.3",
+            "MATK +4.40%",
+            "INT +9, Max HP +185"
+            ],
+        "armor": [
+            "Vitality Boost Lv.3",
+            "Max HP +530",
+            "VIT +6, Max HP +130"
+            ],
+        "cloak": [
+            "Vitality Boost Lv.3",
+            "Max HP +440",
+            "VIT +5, Max HP +100"
+            ],
+        "shoes": [
+            "Vitality Boost Lv.3",
+            "CRIT RES +5, MaxHP +80",
+            "VIT +4, Max HP +80"
+            ],
+        "accessory1": [
+            "Magic Boon Lv.3",
+            "MATK +3.10%",
+            "DEX +6, Max HP +120"
+            ],
+        "accessory2": [
+            "Magic Boon Lv.3",
+            "MATK +3.20%",
+            "AGI +6, Max HP +125"
+        ],
+        "backwear": [
+            "PvP Technique Lv.3",
+            "Ignore MDEF +5, Max HP +90",
+            "Ignore MDEF +5, Max HP +90"
+        ],
+        "costume": [
+            "PvP Technique Lv.3",
+            "DEX +5, Max HP +100",
+            "MATK +26"
+        ]
+      },
+      "skills": [
+        { "skillId": "fire-bolt", "level": 10 },
+        { "skillId": "cold-bolt", "level": 10 },
+        { "skillId": "lightning-bolt", "level": 10 },
+        { "skillId": "fire-ball", "level": 10 },
+        { "skillId": "frost-driver", "level": 10 },
+        { "skillId": "thunder-storm", "level": 10 },
+        { "skillId": "meteor-storm", "level": 10 },
+        { "skillId": "storm-gust", "level": 10 },
+        { "skillId": "lord-of-vermilion", "level": 10 }
+      ],
+
+      "name": "Tank Healer Ministrel",
+
+      "divineArmament": {
+        "seasonalStats": {
+          "Elemental Chaos": {
+            "Level": 19,
+            "Permanent Stats": {
+              "pdef": 95,
+              "mdef": 38,
+              "maxhp": 1425,
+              "pvpdmgreduction": 190
+            },
+            "Seasonal Stats": {
+                "PDMG/MDGM Bonus": "1%",
+                "PDMG/MDGM Reduction": "0.2%",
+                "DMG vs Wind Enemies": "0.8%",
+                "DMG vs Earth Enemies": "0.4%",
+                "DMG vs Fire Enemies": "0.4%",
+                "DMG vs Water Enemies": "0.4%",
+                "DMG Reduction vs Wind Enemies": "0.2%",
+                "DMG Reduction vs Earth Enemies": "0.4%",
+                "DMG Reduction vs Fire Enemies": "0.4%",
+                "DMG Reduction vs Water Enemies": "0.2%"
+            }
+          }
+        },
+
+        "weapon": {
+          "set": "Netherforce",
+          "effects": {
+            "base": [
+              "Max SP +8%",
+              "Every 10 Max SP increases MATK by 1 (up to 45,000 Max SP)"
+            ],
+            "refine": [
+              {
+                "level": 6,
+                "effects": [
+                  "Every 500 Max SP reduces Global CD by 1% (up to -20%)"
+                ]
+              },
+              {
+                "level": 10,
+                "effects": [
+                  "Every 400 Max SP increases MDMG by 1% (up to 45,000 Max SP)"
+                ]
+              },
+              {
+                "level": 15,
+                "effects": ["Max SP +5%"]
+              }
+            ]
+          }
+        },
+        "shield": {
+          "set": "",
+          "effects": {
+            "base": [
+              
+            ],
+            "refine": [
+             
+            ]
+          }
+        },
+
+        "armor": {
+          "set": "Sprint Set",
+          "effects": {
+            "base": ["INT +1", "MDMG +2%"],
+            "refine": [
+              { "level": 3, "effects": ["INT +1"] },
+              { "level": 6, "effects": ["MATK +2%"] },
+              { "level": 10, "effects": ["MATK +3%"] },
+              { "level": 12, "effects": ["PDMG Reduction +3%"] },
+              { "level": 15, "effects": ["Max HP +200"] }
+            ]
+          },
+          "set_effects": [
+            {
+              "pieces": 3,
+              "effects": [
+                "Max SP +5%",
+                "Global CD -10%",
+                "MDMG +8%"
+              ]
+            }
+          ]
+        }
+      },
+      
+      "feather": { 
+            "Valkyrie - Duel": { 
+                "feather1": "[MIX] Light Tier 7",
+                "feather2": "[ATK] Faith Tier 13]",
+                "feather3": "[ATK] Day Tier 7]",
+                "feather4": "[ATK] Space Tier 7]",
+                "feather5": "[ATK] Time Tier 7]" 
+                },
+            "Valkyrie - Wisdom": {
+                "feather1": "[MIX] Light Tier 2",
+                "feather2": "[MIX] Dark Tier 2]",
+                "feather3": "[MIX] Truth Tier 3]",
+                "feather4": "[DEF] Terra Tier 7]",
+                "feather5": "[DEF] Divine Tier 4]" 
+                }, 
+            "Valkyrie - Rune": {
+                "feather1": "[MIX] Light Tier 6",
+                "feather2": "[ATK] Faith Tier 13]",
+                "feather3": "[ATK] Day Tier 7]",
+                "feather4": "[ATK] Space Tier 7]",
+                "feather5": "[ATK] Time Tier 7]" 
+                }, 
+            "Valkyrie - Fortitude": {
+                "feather1": "[MIX] Light Tier 2",
+                "feather2": "[MIX] Dark Tier 2]",
+                "feather3": "[MIX] Truth Tier 2]",
+                "feather4": "[DEF] Terra Tier 7]",
+                "feather5": "[DEF] Divine Tier 3]"
+                },
+            "Valkyrie - Weapon": {
+                "feather1": "[MIX] Light Tier 6",
+                "feather2": "[ATK] Faith Tier 12]",
+                "feather3": "[ATK] Day Tier 7]",
+                "feather4": "[ATK] Space Tier 7]",
+                "feather5": "[ATK] Time Tier 6]"
+                },
+            "Valkyrie - Mist": {
+                "feather1": "[MIX] Light Tier 2",
+                "feather2": "[MIX] Dark Tier 2]",
+                "feather3": "[MIX] Truth Tier 2]",
+                "feather4": "[DEF] Terra Tier 7]",
+                "feather5": "[DEF] Divine Tier 3]"
+                },
+            "Valkyrie - Intimidation": {
+                "feather1": "[MIX] Light Tier 6",
+                "feather2": "[ATK] Faith Tier 12]",
+                "feather3": "[ATK] Day Tier 7]",
+                "feather4": "[ATK] Space Tier 6]",
+                "feather5": "[ATK] Time Tier 6]"
+                },
+            "Valkyrie - Relic": {
+                "feather1": "[MIX] Light Tier 1",
+                "feather2": "[MIX] Dark Tier 1]",
+                "feather3": "[MIX] Truth Tier 2]",
+                "feather4": "[DEF] Terra Tier 7]",
+                "feather5": "[DEF] Divine Tier 3]"
+                }, 
+            "Valkyrie - Omni": {
+                "feather1": "[MIX] Light Tier 5",
+                "feather2": "[ATK] Faith Tier 12]",
+                "feather3": "[ATK] Day Tier 7]",
+                "feather4": "[ATK] Space Tier 6]",
+                "feather5": "[ATK] Time Tier 6]" 
+                 }, 
+            "Valkyrie - Conqueror": {
+                "feather1": "[MIX] Light Tier 1",
+                "feather2": "[MIX] Dark Tier 1]",
+                "feather3": "[MIX] Truth Tier 2]",
+                "feather4": "[DEF] Terra Tier 6]",
+                "feather5": "[DEF] Divine Tier 3]"
+                }
+        },
+
+      "author": "FreddieAguilar",
+      "description": "Tank Healer PvP build for Guild League",
+      "eventId": "guild-league",
+
+        "stats": {
+        "allocated": {
+            "str": 1,
+            "agi": 1,
+            "vit": 77,
+            "int": 99,
+            "dex": 50,
+            "luk": 4
+        },
+        "bonus": {
+            "str": 18,
+            "agi": 36,
+            "vit": 56,
+            "int": 110,
+            "dex": 60,
+            "luk": 21
+        }
+        },
+
+      "medals": {
+        "Medal of Bravery": { "Level": 37 },
+        "Medal of Heroism": { "Level": 1 },
+        "Medal of Wisdom": { "Level": 45 },
+        "Medal of Charm": { "Level": 9 },
+        "Medal of Tempest": { "Level": 2 },
+        "Medal of Gratitude": { "Level": 1 },
+        "Medal of Loyalty": { "Level": 1 }
+      },
+
+      "categoryId": "pvp",
+      "tags": ["tank", "healer"],
+
+      "classId": "ministrel",
+      "buildTypeId": "tank-healer"
+    }
+  ]
+}
