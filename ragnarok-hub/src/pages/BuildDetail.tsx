@@ -45,7 +45,7 @@ export default function BuildDetail() {
   const isNightmareTemple = build.eventId === 'nightmare-temple';
   const hasSeasonalStats = build.divineArmament?.seasonalStats && Object.keys(build.divineArmament.seasonalStats).length > 0;
   // For Nightmare Temple, use selected season; for others, use the first available season
-  const currentSeasonalStats = hasSeasonalStats
+  const currentSeasonalStats = hasSeasonalStats && build.divineArmament?.seasonalStats
     ? (isNightmareTemple && selectedSeason ? build.divineArmament.seasonalStats[selectedSeason] : Object.values(build.divineArmament.seasonalStats)[0])
     : undefined;
 
