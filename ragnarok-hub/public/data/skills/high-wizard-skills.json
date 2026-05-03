@@ -1,0 +1,176 @@
+{
+  "classId": "high-wizard",
+  "className": "High Wizard",
+  "skillTrees": [
+    {
+      "id": "basic",
+      "name": "Basic Skills",
+      "skills": [
+        {
+          "id": "fire-bolt",
+          "name": "Fire Bolt",
+          "icon": "/skills/icons/highwizard/fire-bolt.png",
+          "maxLevel": 10,
+          "description": "Launches a fire bolt at the target, dealing fire magic damage.",
+          "type": "",
+          "prerequisites": []
+        },
+        {
+          "id": "cold-bolt",
+          "name": "Cold Bolt",
+          "icon": "/skills/icons/highwizard/cold-bolt.png",
+          "maxLevel": 10,
+          "description": "Launches a cold bolt at the target, dealing water magic damage.",
+          "type": "active",
+          "prerequisites": []
+        },
+        {
+          "id": "lightning-bolt",
+          "name": "Lightning Bolt",
+          "icon": "/skills/icons/lightning-bolt.png",
+          "maxLevel": 10,
+          "description": "Launches a lightning bolt at the target, dealing wind magic damage.",
+          "type": "active",
+          "prerequisites": []
+        },
+        {
+          "id": "soul-strike",
+          "name": "Soul Strike",
+          "icon": "/skills/icons/soul-strike.png",
+          "maxLevel": 10,
+          "description": "Launches multiple spirit projectiles at the target.",
+          "type": "active",
+          "prerequisites": []
+        },
+        {
+          "id": "increase-sp-recovery",
+          "name": "Increase SP Recovery",
+          "icon": "/skills/icons/increase-sp-recovery.png",
+          "maxLevel": 10,
+          "description": "Permanently increases natural SP recovery speed, restoring [30 + 2% * Max SP] every 10 seconds, and when using SP Recovery items, increases the recovery amount to 150%.",
+          "type": "passive",
+          "prerequisites": []
+        }
+      ]
+    },
+    {
+      "id": "first-tree",
+      "name": "First Tree",
+      "skills": [
+        {
+          "id": "fire-ball",
+          "name": "Fire Ball",
+          "icon": "/skills/icons/fire-ball.png",
+          "maxLevel": 10,
+          "description": "Creates a fire ball that explodes on impact, dealing area fire damage.",
+          "type": "active",
+          "prerequisites": [
+            { "skillId": "fire-bolt", "level": 4 }
+          ]
+        },
+        {
+          "id": "frost-driver",
+          "name": "Frost Driver",
+          "icon": "/skills/icons/frost-driver.png",
+          "maxLevel": 10,
+          "description": "Launches a freezing wave that deals water damage and may freeze enemies.",
+          "type": "active",
+          "prerequisites": [
+            { "skillId": "cold-bolt", "level": 4 }
+          ]
+        },
+        {
+          "id": "thunder-storm",
+          "name": "Thunder Storm",
+          "icon": "/skills/icons/thunder-storm.png",
+          "maxLevel": 10,
+          "description": "Summons lightning strikes in an area, dealing wind damage to multiple targets.",
+          "type": "active",
+          "prerequisites": [
+            { "skillId": "lightning-bolt", "level": 4 }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "second-tree",
+      "name": "Second Tree",
+      "skills": [
+        {
+          "id": "meteor-storm",
+          "name": "Meteor Storm",
+          "icon": "/skills/icons/meteor-storm.png",
+          "maxLevel": 10,
+          "description": "Summons meteors to rain down on an area, dealing massive fire damage over time.",
+          "type": "active",
+          "prerequisites": [
+            { "skillId": "fire-ball", "level": 5 }
+          ]
+        },
+        {
+          "id": "heaven-s-drive",
+          "name": "Heaven's Drive",
+          "icon": "/skills/icons/heavens-drive.png",
+          "maxLevel": 5,
+          "description": "Summons earth pillars from the ground, dealing earth damage to enemies.",
+          "type": "active",
+          "prerequisites": [
+            { "skillId": "fire-ball", "level": 3 },
+            { "skillId": "frost-driver", "level": 3 }
+          ]
+        },
+        {
+          "id": "storm-gust",
+          "name": "Storm Gust",
+          "icon": "/skills/icons/storm-gust.png",
+          "maxLevel": 10,
+          "description": "Creates a blizzard that deals wind damage and may freeze enemies in the area.",
+          "type": "active",
+          "prerequisites": [
+            { "skillId": "frost-driver", "level": 5 }
+          ]
+        },
+        {
+          "id": "lord-of-vermilion",
+          "name": "Lord of Vermilion",
+          "icon": "/skills/icons/lord-of-vermilion.png",
+          "maxLevel": 10,
+          "description": "Creates a powerful lightning storm that deals massive wind damage to all enemies.",
+          "type": "active",
+          "prerequisites": [
+            { "skillId": "thunder-storm", "level": 5 }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "third-tree",
+      "name": "Third Tree",
+      "skills": [
+        {
+          "id": "quagmire",
+          "name": "Quagmire",
+          "icon": "/skills/icons/quagmire.png",
+          "maxLevel": 5,
+          "description": "Creates a swamp that slows enemies and reduces their AGI and DEX.",
+          "type": "active",
+          "prerequisites": [
+            { "skillId": "storm-gust", "level": 3 }
+          ]
+        },
+        {
+          "id": "ganbantein",
+          "name": "Ganbantein",
+          "icon": "/skills/icons/ganbantein.png",
+          "maxLevel": 5,
+          "description": "Removes all buffs and debuffs from the target area.",
+          "type": "active",
+          "prerequisites": [
+            { "skillId": "lord-of-vermilion", "level": 3 },
+            { "skillId": "meteor-storm", "level": 3 }
+          ]
+        }
+      ]
+    }
+  ]
+}

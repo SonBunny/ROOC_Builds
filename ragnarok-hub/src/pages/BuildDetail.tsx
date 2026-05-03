@@ -103,7 +103,7 @@ export default function BuildDetail() {
           categoryId={build.categoryId}
           buildName={build.name}
         />
-        <SkillsDisplay skills={build.skills || []} />
+        <SkillsDisplay classId={build.classId} buildSkills={build.skills} />
       </div>
 
       <EquipmentDisplay equipment={build.equipment} />

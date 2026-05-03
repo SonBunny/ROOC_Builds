@@ -142,7 +142,7 @@ export interface Build {
   lastUpdated?: string;
   stats: Stats;
   equipment: Equipment;
-  skills?: string[];
+  skills?: BuildSkill[];
   feather?: Feather;
   pet?: { name: string; level: number };
   medals?: Medals;
@@ -161,4 +161,36 @@ export interface Season {
   startDate: string;
   endDate: string;
   isLatest: boolean;
+}
+
+export interface SkillPrerequisite {
+  skillId: string;
+  level: number;
+}
+
+export interface Skill {
+  id: string;
+  name: string;
+  icon: string;
+  maxLevel: number;
+  description: string;
+  type: 'active' | 'passive';
+  prerequisites: SkillPrerequisite[];
+}
+
+export interface SkillTree {
+  id: string;
+  name: string;
+  skills: Skill[];
+}
+
+export interface ClassSkillData {
+  classId: string;
+  className: string;
+  skillTrees: SkillTree[];
+}
+
+export interface BuildSkill {
+  skillId: string;
+  level: number;
 }

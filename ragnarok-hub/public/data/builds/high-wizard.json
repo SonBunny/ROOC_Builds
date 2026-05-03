@@ -122,13 +122,17 @@
             "MATK +26"
         ]
       },
-      "skills":  [
-                 "Sonic Blow",
-                 "Cloak",
-                 "Envenom",
-                 "Soul Destroyer",
-                 "Meteor Assault"
-                ],
+      "skills": [
+        { "skillId": "fire-bolt", "level": 10 },
+        { "skillId": "cold-bolt", "level": 10 },
+        { "skillId": "lightning-bolt", "level": 10 },
+        { "skillId": "fire-ball", "level": 10 },
+        { "skillId": "frost-driver", "level": 10 },
+        { "skillId": "thunder-storm", "level": 10 },
+        { "skillId": "meteor-storm", "level": 10 },
+        { "skillId": "storm-gust", "level": 10 },
+        { "skillId": "lord-of-vermilion", "level": 10 }
+      ],
 
       "name": "Storm Gust High Wizard",
 

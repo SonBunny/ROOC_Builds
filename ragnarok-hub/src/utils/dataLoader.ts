@@ -1,4 +1,4 @@
-import type { Class, Category, Event, BuildType, Build, Season } from '../types/builds';
+import type { Class, Category, Event, BuildType, Build, Season, ClassSkillData } from '../types/builds';
 
 export async function loadClasses(): Promise<Class[]> {
   const response = await fetch('/data/classes.json');
@@ -47,4 +47,14 @@ export async function loadSeasons(): Promise<Season[]> {
 export async function getLatestSeason(): Promise<Season | null> {
   const seasons = await loadSeasons();
   return seasons.find(s => s.isLatest) || null;
+}
+
+export async function loadClassSkills(classId: string): Promise<ClassSkillData | null> {
+  try {
+    const response = await fetch(`/data/skills/${classId}-skills.json`);
+    if (!response.ok) return null;
+    return await response.json();
+  } catch {
+    return null;
+  }
 }
