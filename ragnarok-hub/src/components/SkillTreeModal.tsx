@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
-import type { SkillTree, BuildSkill } from '../types/builds';
+import type { SkillTree, BuildSkill, Skill } from '../types/builds';
 
 interface SkillTreeModalProps {
   skillTrees: SkillTree[];
@@ -16,10 +16,10 @@ interface SkillPosition {
 }
 
 interface TreeNode {
-  skill: any;
+  skill: Skill;
   level: number;
   children: TreeNode[];
-  prerequisites: any[];
+  prerequisites: TreeNode[];
 }
 
 export default function SkillTreeModal({ skillTrees, buildSkills = [], onClose }: SkillTreeModalProps) {
@@ -29,6 +29,8 @@ export default function SkillTreeModal({ skillTrees, buildSkills = [], onClose }
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [isDragging, setIsDragging] = useState(false);
   const [dragStart, setDragStart] = useState({ x: 0, y: 0 });
+  const [initialPinchDistance, setInitialPinchDistance] = useState<number | null>(null);
+  const [initialScale, setInitialScale] = useState(1);
 
   // Get all skills from all trees
   const allSkills = skillTrees.flatMap(tree => tree.skills);
@@ -211,6 +213,50 @@ export default function SkillTreeModal({ skillTrees, buildSkills = [], onClose }
     setIsDragging(false);
   };
 
+  // Touch handlers for mobile
+  const getDistance = (touch1: React.Touch, touch2: React.Touch) => {
+    const dx = touch1.clientX - touch2.clientX;
+    const dy = touch1.clientY - touch2.clientY;
+    return Math.sqrt(dx * dx + dy * dy);
+  };
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    if (e.touches.length === 2) {
+      // Pinch gesture
+      setInitialPinchDistance(getDistance(e.touches[0], e.touches[1]));
+      setInitialScale(scale);
+    } else if (e.touches.length === 1) {
+      // Single touch - drag
+      setIsDragging(true);
+      const touch = e.touches[0];
+      setDragStart({ x: touch.clientX - position.x, y: touch.clientY - position.y });
+    }
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    if (e.touches.length === 2 && initialPinchDistance !== null) {
+      // Pinch to zoom
+      e.preventDefault();
+      const currentDistance = getDistance(e.touches[0], e.touches[1]);
+      const scaleChange = currentDistance / initialPinchDistance;
+      const newScale = Math.max(0.5, Math.min(2, initialScale * scaleChange));
+      setScale(newScale);
+    } else if (e.touches.length === 1 && isDragging) {
+      // Single touch - drag
+      e.preventDefault();
+      const touch = e.touches[0];
+      setPosition({
+        x: touch.clientX - dragStart.x,
+        y: touch.clientY - dragStart.y,
+      });
+    }
+  };
+
+  const handleTouchEnd = () => {
+    setIsDragging(false);
+    setInitialPinchDistance(null);
+  };
+
   // Zoom handlers
   const handleZoomIn = () => {
     setScale(prev => Math.min(prev + 0.2, 2));
@@ -235,13 +281,13 @@ export default function SkillTreeModal({ skillTrees, buildSkills = [], onClose }
 
   // Draw connection lines (horizontal layout)
   const drawConnectionLines = () => {
-    const lines: JSX.Element[] = [];
+    const lines: React.ReactNode[] = [];
 
     treeStructure.forEach(node => {
       const nodePos = positions.get(node.skill.id);
       if (!nodePos) return;
 
-      node.prerequisites.forEach(prereqNode => {
+      node.prerequisites.forEach((prereqNode: TreeNode) => {
         const prereqPos = positions.get(prereqNode.skill.id);
         if (!prereqPos) return;
 
@@ -324,7 +370,7 @@ export default function SkillTreeModal({ skillTrees, buildSkills = [], onClose }
             Reset
           </button>
           <span className="text-gray-400 text-base ml-2">
-            Drag to pan • Scroll to zoom
+            Drag to pan • Scroll/pinch to zoom
           </span>
         </div>
 
@@ -335,7 +381,7 @@ export default function SkillTreeModal({ skillTrees, buildSkills = [], onClose }
         >
           <div
             ref={containerRef}
-            className="relative cursor-grab active:cursor-grabbing"
+            className="relative cursor-grab active:cursor-grabbing touch-none"
             style={{
               width: '100%',
               height: '100%',
@@ -346,6 +392,9 @@ export default function SkillTreeModal({ skillTrees, buildSkills = [], onClose }
             onMouseUp={handleMouseUp}
             onMouseLeave={handleMouseUp}
             onWheel={handleWheel}
+            onTouchStart={handleTouchStart}
+            onTouchMove={handleTouchMove}
+            onTouchEnd={handleTouchEnd}
           >
             <div
               style={{

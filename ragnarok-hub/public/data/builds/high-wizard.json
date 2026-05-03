@@ -147,16 +147,16 @@
               "pvpdmgreduction": 190
             },
             "Seasonal Stats": {
-                "PDMG/MDGM Bonus": 20,
-                "PDMG/MDGM Reduction": 20,
-                "DMG vs Wind Enemies": 20,
-                "DMG vs Earth Enemies": 20,
-                "DMG vs Fire Enemies": 20,
-                "DMG vs Water Enemies": 20,
-                "DMG Reduction vs Wind Enemies": 20,
-                "DMG Reduction vs Earth Enemies": 20,
-                "DMG Reduction vs Fire Enemies": 20,
-                "DMG Reduction vs Water Enemies": 20
+                "PDMG/MDGM Bonus": "1%",
+                "PDMG/MDGM Reduction": "0.2%",
+                "DMG vs Wind Enemies": "0.8%",
+                "DMG vs Earth Enemies": "0.4%",
+                "DMG vs Fire Enemies": "0.4%",
+                "DMG vs Water Enemies": "0.4%",
+                "DMG Reduction vs Wind Enemies": "0.2%",
+                "DMG Reduction vs Earth Enemies": "0.4%",
+                "DMG Reduction vs Fire Enemies": "0.4%",
+                "DMG Reduction vs Water Enemies": "0.2%"
             }
           }
         },
