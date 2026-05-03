@@ -24,7 +24,6 @@ interface TreeNode {
 
 export default function SkillTreeModal({ skillTrees, buildSkills = [], onClose }: SkillTreeModalProps) {
   const containerRef = useRef<HTMLDivElement>(null);
-  const [skillPositions, setSkillPositions] = useState<Map<string, SkillPosition>>(new Map());
   const [scale, setScale] = useState(1.4);
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [isDragging, setIsDragging] = useState(false);
@@ -96,7 +95,6 @@ export default function SkillTreeModal({ skillTrees, buildSkills = [], onClose }
       levelGroups.get(node.level)!.push(node);
     });
 
-    const maxLevel = Math.max(...levelGroups.keys());
     const nodeWidth = 200;
     const nodeHeight = 130;
     const levelGap = 250; // Horizontal gap between levels

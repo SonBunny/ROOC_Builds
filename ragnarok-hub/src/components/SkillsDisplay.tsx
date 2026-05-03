@@ -19,7 +19,7 @@ export default function SkillsDisplay({ classId, buildSkills }: SkillsDisplayPro
         setSkillData(data);
         setLoading(false);
       })
-      .catch(err => {
+      .catch(() => {
         setError('Failed to load skill data');
         setLoading(false);
       });

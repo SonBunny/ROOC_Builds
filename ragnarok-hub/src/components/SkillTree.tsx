@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import type { SkillTree, BuildSkill } from '../types/builds';
-import SkillNode from './SkillNode';
 import SkillTreeModal from './SkillTreeModal';
 
 interface SkillTreeProps {
